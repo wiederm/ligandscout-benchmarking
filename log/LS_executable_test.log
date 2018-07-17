@@ -1,0 +1,721 @@
+INFO:root:Started
+INFO:root:################################
+INFO:root:################################
+INFO:root:idbgen test started
+INFO:root:################################
+INFO:root:################################
+INFO:root:Starting with : test1
+INFO:root:Calling /home/mwieder/Work/Software/ligandscout4//idbgen
+INFO:root:Input: ../data/actives_final_1XL2.sdf
+INFO:root:Output: ../data/actives_final_1XL2.ldb
+INFO:root:Options: --confgen-type icon-fast
+INFO:root:Testing: time duplicate failed
+INFO:root:Process-ID: 10389
+INFO:root:- Watching 7 active threats
+INFO:root:  + Watching: 10596
+INFO:root:  + Watching: 10574
+INFO:root:  + Watching: 10552
+INFO:root:  + Watching: 10529
+INFO:root:  + Watching: 10505
+INFO:root:  + Watching: 10458
+INFO:root:  + Watching: 10389
+INFO:root:Memory consumption: 1.3 GB
+INFO:root:CPU-Usage on 7 threats : 799.400000
+INFO:root:Memory consumption: 1.43 GB
+INFO:root:CPU-Usage on 7 threats : 301.700000
+INFO:root:Memory consumption: 1.43 GB
+INFO:root:CPU-Usage on 7 threats : 303.700000
+INFO:root:Memory consumption: 1.44 GB
+INFO:root:CPU-Usage on 7 threats : 384.700000
+INFO:root:Memory consumption: 1.51 GB
+INFO:root:CPU-Usage on 7 threats : 408.600000
+INFO:root:Memory consumption: 1.56 GB
+INFO:root:CPU-Usage on 7 threats : 322.700000
+INFO:root:Memory consumption: 1.67 GB
+INFO:root:CPU-Usage on 7 threats : 236.800000
+INFO:root:Memory consumption: 1.69 GB
+INFO:root:CPU-Usage on 7 threats : 270.700000
+INFO:root:Memory consumption: 1.71 GB
+INFO:root:CPU-Usage on 7 threats : 401.800000
+INFO:root:Memory consumption: 1.74 GB
+INFO:root:CPU-Usage on 7 threats : 525.500000
+INFO:root:Memory consumption: 1.74 GB
+INFO:root:CPU-Usage on 7 threats : 299.700000
+INFO:root:Memory consumption: 1.74 GB
+INFO:root:CPU-Usage on 7 threats : 299.700000
+INFO:root:Memory consumption: 1.73 GB
+INFO:root:CPU-Usage on 7 threats : 400.700000
+INFO:root:Memory consumption: 1.73 GB
+INFO:root:CPU-Usage on 7 threats : 299.700000
+INFO:root:Memory consumption: 1.73 GB
+INFO:root:CPU-Usage on 7 threats : 335.700000
+INFO:root:Memory consumption: 1.73 GB
+INFO:root:CPU-Usage on 7 threats : 298.700000
+INFO:root:Memory consumption: 1.74 GB
+INFO:root:CPU-Usage on 7 threats : 453.600000
+INFO:root:Memory consumption: 1.73 GB
+INFO:root:CPU-Usage on 7 threats : 299.700000
+INFO:root:Memory consumption: 1.79 GB
+INFO:root:CPU-Usage on 7 threats : 488.600000
+INFO:root:Memory consumption: 1.79 GB
+INFO:root:CPU-Usage on 7 threats : 298.700000
+INFO:root:Memory consumption: 1.79 GB
+INFO:root:CPU-Usage on 7 threats : 496.700000
+INFO:root:Memory consumption: 1.81 GB
+INFO:root:CPU-Usage on 7 threats : 385.700000
+INFO:root:Memory consumption: 1.81 GB
+INFO:root:CPU-Usage on 7 threats : 299.700000
+INFO:root:Memory consumption: 1.81 GB
+INFO:root:CPU-Usage on 7 threats : 301.700000
+INFO:root:Memory consumption: 1.85 GB
+INFO:root:CPU-Usage on 7 threats : 348.600000
+INFO:root:Memory consumption: 1.85 GB
+INFO:root:CPU-Usage on 7 threats : 356.700000
+INFO:root:Memory consumption: 1.87 GB
+INFO:root:CPU-Usage on 7 threats : 280.800000
+INFO:root:Memory consumption: 1.87 GB
+INFO:root:CPU-Usage on 7 threats : 348.700000
+INFO:root:Memory consumption: 1.89 GB
+INFO:root:CPU-Usage on 7 threats : 236.000000
+INFO:root:Memory consumption: 1.9 GB
+INFO:root:CPU-Usage on 7 threats : 300.700000
+INFO:root:Memory consumption: 1.9 GB
+INFO:root:CPU-Usage on 7 threats : 300.700000
+INFO:root:Memory consumption: 1.91 GB
+INFO:root:CPU-Usage on 7 threats : 298.700000
+INFO:root:Memory consumption: 1.91 GB
+INFO:root:CPU-Usage on 7 threats : 298.700000
+INFO:root:Memory consumption: 1.91 GB
+INFO:root:CPU-Usage on 7 threats : 299.700000
+INFO:root:Memory consumption: 1.91 GB
+INFO:root:CPU-Usage on 7 threats : 411.600000
+INFO:root:Memory consumption: 1.91 GB
+INFO:root:CPU-Usage on 7 threats : 298.800000
+INFO:root:Memory consumption: 1.91 GB
+INFO:root:CPU-Usage on 7 threats : 422.600000
+INFO:root:Memory consumption: 1.95 GB
+INFO:root:CPU-Usage on 7 threats : 345.700000
+INFO:root:Memory consumption: 2.01 GB
+INFO:root:CPU-Usage on 7 threats : 528.700000
+INFO:root:Memory consumption: 1.99 GB
+INFO:root:CPU-Usage on 7 threats : 251.900000
+INFO:root:Memory consumption: 2.03 GB
+INFO:root:CPU-Usage on 7 threats : 308.700000
+INFO:root:Memory consumption: 2.02 GB
+INFO:root:CPU-Usage on 7 threats : 307.900000
+INFO:root:Memory consumption: 2.05 GB
+INFO:root:CPU-Usage on 7 threats : 252.800000
+INFO:root:Memory consumption: 2.04 GB
+INFO:root:CPU-Usage on 7 threats : 336.800000
+INFO:root:Memory consumption: 2.03 GB
+INFO:root:CPU-Usage on 7 threats : 299.700000
+INFO:root:Memory consumption: 2.03 GB
+INFO:root:CPU-Usage on 7 threats : 299.700000
+INFO:root:Memory consumption: 2.04 GB
+INFO:root:CPU-Usage on 7 threats : 299.700000
+INFO:root:Memory consumption: 2.04 GB
+INFO:root:CPU-Usage on 7 threats : 298.700000
+INFO:root:Memory consumption: 2.04 GB
+INFO:root:CPU-Usage on 7 threats : 303.700000
+INFO:root:Memory consumption: 2.05 GB
+INFO:root:CPU-Usage on 7 threats : 291.700000
+INFO:root:Memory consumption: 2.08 GB
+INFO:root:CPU-Usage on 7 threats : 298.700000
+INFO:root:Memory consumption: 2.08 GB
+INFO:root:CPU-Usage on 7 threats : 208.900000
+INFO:root:Memory consumption: 2.13 GB
+INFO:root:CPU-Usage on 7 threats : 380.700000
+INFO:root:Memory consumption: 2.14 GB
+INFO:root:CPU-Usage on 7 threats : 403.800000
+INFO:root:Memory consumption: 2.15 GB
+INFO:root:CPU-Usage on 7 threats : 237.800000
+INFO:root:Memory consumption: 2.16 GB
+INFO:root:CPU-Usage on 7 threats : 298.700000
+INFO:root:Memory consumption: 2.16 GB
+INFO:root:CPU-Usage on 7 threats : 436.700000
+INFO:root:Memory consumption: 2.17 GB
+INFO:root:CPU-Usage on 7 threats : 298.700000
+INFO:root:Memory consumption: 2.17 GB
+INFO:root:CPU-Usage on 7 threats : 398.600000
+INFO:root:Memory consumption: 2.17 GB
+INFO:root:CPU-Usage on 7 threats : 118.900000
+INFO:root:Memory consumption: 2.16 GB
+INFO:root:CPU-Usage on 7 threats : 308.800000
+INFO:root:Memory consumption: 2.05 GB
+INFO:root:CPU-Usage on 7 threats : 266.700000
+INFO:root:Memory consumption: 2.05 GB
+INFO:root:Started
+INFO:root:################################
+INFO:root:################################
+INFO:root:idbgen test started
+INFO:root:################################
+INFO:root:################################
+INFO:root:Starting with : test1
+INFO:root:Calling /home/mwieder/Work/Software/ligandscout4//idbgen
+INFO:root:Input: ../data/actives_final_1XL2.sdf
+INFO:root:Output: ../data/actives_final_1XL2.ldb
+INFO:root:Options: --confgen-type icon-fast
+INFO:root:Testing: time duplicate failed
+INFO:root:Process-ID: 7626
+INFO:root:Started
+INFO:root:################################
+INFO:root:################################
+INFO:root:idbgen test started
+INFO:root:################################
+INFO:root:################################
+INFO:root:Starting with : test1
+INFO:root:Calling /home/mwieder/Work/Software/ligandscout4//idbgen
+INFO:root:Input: ../data/actives_final_1XL2.sdf
+INFO:root:Output: ../data/actives_final_1XL2.ldb
+INFO:root:Options: --confgen-type icon-fast
+INFO:root:Testing: time duplicate failed
+INFO:root:Process-ID: 8801
+INFO:root:Started
+INFO:root:################################
+INFO:root:################################
+INFO:root:idbgen test started
+INFO:root:################################
+INFO:root:################################
+INFO:root:Starting with : test1
+INFO:root:Calling /home/mwieder/Work/Software/ligandscout4//idbgen
+INFO:root:Input: ../data/actives_final_1XL2.sdf
+INFO:root:Output: ../data/actives_final_1XL2.ldb
+INFO:root:Options: --confgen-type icon-fast
+INFO:root:Testing: time duplicate failed
+INFO:root:Process-ID: 9125
+INFO:root:- Watching 7 active threats
+INFO:root:  + Watching: psutil.Process(pid=9125, name='java', started='17:05:40')
+INFO:root:  + Watching: psutil.Process(pid=9194, name='java', started='17:05:40')
+INFO:root:  + Watching: psutil.Process(pid=9241, name='java', started='17:05:42')
+INFO:root:  + Watching: psutil.Process(pid=9265, name='java', started='17:05:42')
+INFO:root:  + Watching: psutil.Process(pid=9288, name='java', started='17:05:42')
+INFO:root:  + Watching: psutil.Process(pid=9311, name='java', started='17:05:44')
+INFO:root:  + Watching: psutil.Process(pid=9333, name='java', started='17:05:44')
+INFO:root:Started
+INFO:root:################################
+INFO:root:################################
+INFO:root:idbgen test started
+INFO:root:################################
+INFO:root:################################
+INFO:root:Starting with : test1
+INFO:root:Calling /home/mwieder/Work/Software/ligandscout4//idbgen
+INFO:root:Input: ../data/actives_final_1XL2.sdf
+INFO:root:Output: ../data/actives_final_1XL2.ldb
+INFO:root:Options: --confgen-type icon-fast
+INFO:root:Testing: time duplicate failed
+INFO:root:Process-ID: 9419
+INFO:root:- Watching 7 active threats
+INFO:root:  + Watching: psutil.Process(pid=9419, name='java', started='17:06:59')
+INFO:root:  + Watching: psutil.Process(pid=9488, name='java', started='17:06:59')
+INFO:root:  + Watching: psutil.Process(pid=9535, name='java', started='17:07:01')
+INFO:root:  + Watching: psutil.Process(pid=9561, name='java', started='17:07:01')
+INFO:root:  + Watching: psutil.Process(pid=9583, name='java', started='17:07:01')
+INFO:root:  + Watching: psutil.Process(pid=9605, name='java', started='17:07:03')
+INFO:root:  + Watching: psutil.Process(pid=9627, name='java', started='17:07:03')
+INFO:root:Started
+INFO:root:################################
+INFO:root:################################
+INFO:root:idbgen test started
+INFO:root:################################
+INFO:root:################################
+INFO:root:Starting with : test1
+INFO:root:Calling /home/mwieder/Work/Software/ligandscout4//idbgen
+INFO:root:Input: ../data/actives_final_1XL2.sdf
+INFO:root:Output: ../data/actives_final_1XL2.ldb
+INFO:root:Options: --confgen-type icon-fast
+INFO:root:Testing: time duplicate failed
+INFO:root:Process-ID: 9734
+INFO:root:- Watching 7 active threats
+INFO:root:  + Watching: psutil.Process(pid=9734, name='java', started='17:07:33')
+INFO:root:  + Watching: psutil.Process(pid=9803, name='java', started='17:07:34')
+INFO:root:  + Watching: psutil.Process(pid=9850, name='java', started='17:07:35')
+INFO:root:  + Watching: psutil.Process(pid=9874, name='java', started='17:07:35')
+INFO:root:  + Watching: psutil.Process(pid=9898, name='java', started='17:07:35')
+INFO:root:  + Watching: psutil.Process(pid=9920, name='java', started='17:07:37')
+INFO:root:  + Watching: psutil.Process(pid=9942, name='java', started='17:07:37')
+INFO:root:Started
+INFO:root:################################
+INFO:root:################################
+INFO:root:idbgen test started
+INFO:root:################################
+INFO:root:################################
+INFO:root:Starting with : test1
+INFO:root:Calling /home/mwieder/Work/Software/ligandscout4//idbgen
+INFO:root:Input: ../data/actives_final_1XL2.sdf
+INFO:root:Output: ../data/actives_final_1XL2.ldb
+INFO:root:Options: --confgen-type icon-fast
+INFO:root:Testing: time duplicate failed
+INFO:root:Process-ID: 10106
+INFO:root:- Watching 7 active threats
+INFO:root:  + Watching: psutil.Process(pid=10106, name='java', started='17:08:16')
+INFO:root:  + Watching: psutil.Process(pid=10175, name='java', started='17:08:17')
+INFO:root:  + Watching: psutil.Process(pid=10222, name='java', started='17:08:18')
+INFO:root:  + Watching: psutil.Process(pid=10246, name='java', started='17:08:18')
+INFO:root:  + Watching: psutil.Process(pid=10269, name='java', started='17:08:18')
+INFO:root:  + Watching: psutil.Process(pid=10291, name='java', started='17:08:20')
+INFO:root:  + Watching: psutil.Process(pid=10313, name='java', started='17:08:20')
+INFO:root:Memory consumption: 1.3 GB
+INFO:root:CPU-Usage on 7 threats : 449.800000
+INFO:root:Memory consumption: 1.4 GB
+INFO:root:CPU-Usage on 7 threats : 298.700000
+INFO:root:Memory consumption: 1.4 GB
+INFO:root:CPU-Usage on 7 threats : 299.700000
+INFO:root:Memory consumption: 1.43 GB
+INFO:root:CPU-Usage on 7 threats : 419.700000
+INFO:root:Memory consumption: 1.52 GB
+INFO:root:CPU-Usage on 7 threats : 199.900000
+INFO:root:Memory consumption: 1.54 GB
+INFO:root:CPU-Usage on 7 threats : 557.600000
+INFO:root:Memory consumption: 1.65 GB
+INFO:root:CPU-Usage on 7 threats : 291.800000
+INFO:root:Memory consumption: 1.64 GB
+INFO:root:CPU-Usage on 7 threats : 544.500000
+INFO:root:Memory consumption: 1.65 GB
+INFO:root:CPU-Usage on 7 threats : 341.800000
+INFO:root:Memory consumption: 1.66 GB
+INFO:root:CPU-Usage on 7 threats : 241.000000
+INFO:root:Memory consumption: 1.67 GB
+INFO:root:CPU-Usage on 7 threats : 419.500000
+INFO:root:Memory consumption: 1.69 GB
+INFO:root:CPU-Usage on 7 threats : 300.700000
+INFO:root:Memory consumption: 1.68 GB
+INFO:root:CPU-Usage on 7 threats : 260.700000
+INFO:root:Memory consumption: 1.68 GB
+INFO:root:CPU-Usage on 7 threats : 516.600000
+INFO:root:Memory consumption: 1.73 GB
+INFO:root:CPU-Usage on 7 threats : 300.800000
+INFO:root:Memory consumption: 1.73 GB
+INFO:root:CPU-Usage on 7 threats : 300.700000
+INFO:root:Memory consumption: 1.75 GB
+INFO:root:CPU-Usage on 7 threats : 299.800000
+INFO:root:Memory consumption: 1.78 GB
+INFO:root:CPU-Usage on 7 threats : 261.800000
+INFO:root:Memory consumption: 1.77 GB
+INFO:root:CPU-Usage on 7 threats : 329.600000
+INFO:root:Memory consumption: 1.81 GB
+INFO:root:CPU-Usage on 7 threats : 562.500000
+INFO:root:Memory consumption: 1.84 GB
+INFO:root:CPU-Usage on 7 threats : 205.800000
+INFO:root:Memory consumption: 1.83 GB
+INFO:root:CPU-Usage on 7 threats : 661.600000
+INFO:root:Memory consumption: 1.88 GB
+INFO:root:CPU-Usage on 7 threats : 424.500000
+INFO:root:Memory consumption: 1.87 GB
+INFO:root:CPU-Usage on 7 threats : 299.700000
+INFO:root:Memory consumption: 1.87 GB
+INFO:root:CPU-Usage on 7 threats : 298.700000
+INFO:root:Memory consumption: 1.89 GB
+INFO:root:CPU-Usage on 7 threats : 448.700000
+INFO:root:Memory consumption: 1.88 GB
+INFO:root:CPU-Usage on 7 threats : 200.800000
+INFO:root:Memory consumption: 1.89 GB
+INFO:root:CPU-Usage on 7 threats : 293.800000
+INFO:root:Memory consumption: 1.9 GB
+INFO:root:CPU-Usage on 7 threats : 285.800000
+INFO:root:Memory consumption: 1.9 GB
+INFO:root:CPU-Usage on 7 threats : 350.800000
+INFO:root:Memory consumption: 1.94 GB
+INFO:root:CPU-Usage on 7 threats : 500.500000
+INFO:root:Memory consumption: 1.95 GB
+INFO:root:CPU-Usage on 7 threats : 298.800000
+INFO:root:Memory consumption: 1.94 GB
+INFO:root:CPU-Usage on 7 threats : 365.600000
+INFO:root:Memory consumption: 1.97 GB
+INFO:root:CPU-Usage on 7 threats : 300.700000
+INFO:root:Memory consumption: 1.97 GB
+INFO:root:CPU-Usage on 7 threats : 290.700000
+INFO:root:Memory consumption: 1.98 GB
+INFO:root:CPU-Usage on 7 threats : 299.700000
+INFO:root:Memory consumption: 1.98 GB
+INFO:root:CPU-Usage on 7 threats : 322.700000
+INFO:root:Memory consumption: 1.98 GB
+INFO:root:CPU-Usage on 7 threats : 298.800000
+INFO:root:Memory consumption: 2.0 GB
+INFO:root:CPU-Usage on 7 threats : 369.600000
+INFO:root:Memory consumption: 2.03 GB
+INFO:root:CPU-Usage on 7 threats : 278.800000
+INFO:root:Memory consumption: 2.05 GB
+INFO:root:CPU-Usage on 7 threats : 229.900000
+INFO:root:Memory consumption: 2.07 GB
+INFO:root:CPU-Usage on 7 threats : 311.800000
+INFO:root:Memory consumption: 2.1 GB
+INFO:root:CPU-Usage on 7 threats : 317.000000
+INFO:root:Memory consumption: 2.09 GB
+INFO:root:CPU-Usage on 7 threats : 297.700000
+INFO:root:Memory consumption: 2.11 GB
+INFO:root:CPU-Usage on 7 threats : 335.800000
+INFO:root:Memory consumption: 2.11 GB
+INFO:root:CPU-Usage on 7 threats : 319.800000
+INFO:root:Memory consumption: 2.12 GB
+INFO:root:CPU-Usage on 7 threats : 412.700000
+INFO:root:Memory consumption: 2.11 GB
+INFO:root:CPU-Usage on 7 threats : 298.700000
+INFO:root:Memory consumption: 2.11 GB
+INFO:root:CPU-Usage on 7 threats : 298.800000
+INFO:root:Memory consumption: 2.12 GB
+INFO:root:CPU-Usage on 7 threats : 296.800000
+INFO:root:Memory consumption: 2.12 GB
+INFO:root:CPU-Usage on 7 threats : 299.800000
+INFO:root:Memory consumption: 2.12 GB
+INFO:root:CPU-Usage on 7 threats : 299.800000
+INFO:root:Memory consumption: 2.12 GB
+INFO:root:CPU-Usage on 7 threats : 297.800000
+INFO:root:Memory consumption: 2.15 GB
+INFO:root:CPU-Usage on 7 threats : 299.800000
+INFO:root:Memory consumption: 2.15 GB
+INFO:root:CPU-Usage on 7 threats : 228.800000
+INFO:root:Memory consumption: 2.16 GB
+INFO:root:CPU-Usage on 7 threats : 403.600000
+INFO:root:Memory consumption: 2.2 GB
+INFO:root:CPU-Usage on 7 threats : 452.700000
+INFO:root:Memory consumption: 2.19 GB
+INFO:root:CPU-Usage on 7 threats : 678.100000
+INFO:root:Memory consumption: 2.22 GB
+INFO:root:CPU-Usage on 7 threats : 354.700000
+INFO:root:Memory consumption: 2.21 GB
+INFO:root:CPU-Usage on 7 threats : 363.700000
+INFO:root:Memory consumption: 2.22 GB
+INFO:root:CPU-Usage on 7 threats : 448.700000
+INFO:root:Memory consumption: 2.23 GB
+INFO:root:CPU-Usage on 7 threats : 399.600000
+INFO:root:Memory consumption: 2.15 GB
+INFO:root:CPU-Usage on 7 threats : 299.800000
+INFO:root:Memory consumption: 2.15 GB
+INFO:root:CPU-Usage on 7 threats : 501.700000
+INFO:root:Memory consumption: 2.09 GB
+INFO:root:CPU-Usage on 7 threats : 218.900000
+INFO:root:Memory consumption: 2.1 GB
+INFO:root:CPU-Usage on 7 threats : 368.900000
+INFO:root:Memory consumption: 2.14 GB
+INFO:root:CPU-Usage on 7 threats : 325.700000
+INFO:root:Memory consumption: 2.15 GB
+INFO:root:Started
+INFO:root:################################
+INFO:root:################################
+INFO:root:idbgen test started
+INFO:root:################################
+INFO:root:################################
+INFO:root:Starting with : test1
+INFO:root:Calling /home/mwieder/Work/Software/ligandscout4//idbgen
+INFO:root:Input: ../data/actives_final_1XL2.sdf
+INFO:root:Output: ../data/actives_final_1XL2.ldb
+INFO:root:Options: --confgen-type icon-fast
+INFO:root:Testing: time duplicate failed
+INFO:root:Process-ID: 6793
+INFO:root:- Watching 7 active threats
+INFO:root:  + Watching: psutil.Process(pid=6793, name='java', started='13:58:37')
+INFO:root:  + Watching: psutil.Process(pid=6862, name='java', started='13:58:37')
+INFO:root:  + Watching: psutil.Process(pid=6909, name='java', started='13:58:38')
+INFO:root:  + Watching: psutil.Process(pid=6933, name='java', started='13:58:39')
+INFO:root:  + Watching: psutil.Process(pid=6956, name='java', started='13:58:39')
+INFO:root:  + Watching: psutil.Process(pid=6978, name='java', started='13:58:40')
+INFO:root:  + Watching: psutil.Process(pid=7000, name='java', started='13:58:41')
+INFO:root:Memory consumption: 1.31 GB
+INFO:root:CPU-Usage on 7 threats : 672.500000
+INFO:root:Memory consumption: 1.42 GB
+INFO:root:CPU-Usage on 7 threats : 307.700000
+INFO:root:Memory consumption: 1.42 GB
+INFO:root:CPU-Usage on 7 threats : 300.700000
+INFO:root:Memory consumption: 1.5 GB
+INFO:root:CPU-Usage on 7 threats : 231.900000
+INFO:root:Memory consumption: 1.55 GB
+INFO:root:CPU-Usage on 7 threats : 265.700000
+INFO:root:Memory consumption: 1.61 GB
+INFO:root:CPU-Usage on 7 threats : 547.600000
+INFO:root:Memory consumption: 1.7 GB
+INFO:root:CPU-Usage on 7 threats : 124.900000
+INFO:root:Memory consumption: 1.72 GB
+INFO:root:CPU-Usage on 7 threats : 468.700000
+INFO:root:Memory consumption: 1.71 GB
+INFO:root:CPU-Usage on 7 threats : 467.500000
+INFO:root:Memory consumption: 1.72 GB
+INFO:root:CPU-Usage on 7 threats : 284.800000
+INFO:root:Memory consumption: 1.76 GB
+INFO:root:CPU-Usage on 7 threats : 299.700000
+INFO:root:Memory consumption: 1.76 GB
+INFO:root:CPU-Usage on 7 threats : 298.700000
+INFO:root:Memory consumption: 1.78 GB
+INFO:root:CPU-Usage on 7 threats : 358.800000
+INFO:root:Memory consumption: 1.82 GB
+INFO:root:CPU-Usage on 7 threats : 297.700000
+INFO:root:Memory consumption: 1.82 GB
+INFO:root:CPU-Usage on 7 threats : 297.700000
+INFO:root:Memory consumption: 1.85 GB
+INFO:root:CPU-Usage on 7 threats : 299.700000
+INFO:root:Memory consumption: 1.85 GB
+INFO:root:CPU-Usage on 7 threats : 399.700000
+INFO:root:Memory consumption: 1.86 GB
+INFO:root:CPU-Usage on 7 threats : 299.800000
+INFO:root:Memory consumption: 1.86 GB
+INFO:root:CPU-Usage on 7 threats : 328.800000
+INFO:root:Memory consumption: 1.87 GB
+INFO:root:CPU-Usage on 7 threats : 298.700000
+INFO:root:Memory consumption: 1.88 GB
+INFO:root:CPU-Usage on 7 threats : 283.900000
+INFO:root:Memory consumption: 1.87 GB
+INFO:root:CPU-Usage on 7 threats : 320.700000
+INFO:root:Memory consumption: 1.9 GB
+INFO:root:CPU-Usage on 7 threats : 373.700000
+INFO:root:Memory consumption: 1.88 GB
+INFO:root:CPU-Usage on 7 threats : 300.700000
+INFO:root:Memory consumption: 1.88 GB
+INFO:root:CPU-Usage on 7 threats : 295.900000
+INFO:root:Memory consumption: 1.88 GB
+INFO:root:CPU-Usage on 7 threats : 302.800000
+INFO:root:Memory consumption: 1.88 GB
+INFO:root:CPU-Usage on 7 threats : 297.800000
+INFO:root:Memory consumption: 1.88 GB
+INFO:root:CPU-Usage on 7 threats : 266.800000
+INFO:root:Memory consumption: 1.92 GB
+INFO:root:CPU-Usage on 7 threats : 435.700000
+INFO:root:Memory consumption: 1.92 GB
+INFO:root:CPU-Usage on 7 threats : 309.800000
+INFO:root:Memory consumption: 1.91 GB
+INFO:root:CPU-Usage on 7 threats : 303.800000
+INFO:root:Memory consumption: 1.91 GB
+INFO:root:CPU-Usage on 7 threats : 299.800000
+INFO:root:Memory consumption: 1.9 GB
+INFO:root:CPU-Usage on 7 threats : 388.700000
+INFO:root:Memory consumption: 1.9 GB
+INFO:root:CPU-Usage on 7 threats : 301.700000
+INFO:root:Memory consumption: 1.9 GB
+INFO:root:CPU-Usage on 7 threats : 396.800000
+INFO:root:Memory consumption: 1.9 GB
+INFO:root:CPU-Usage on 7 threats : 297.800000
+INFO:root:Memory consumption: 1.9 GB
+INFO:root:CPU-Usage on 7 threats : 298.700000
+INFO:root:Memory consumption: 1.9 GB
+INFO:root:CPU-Usage on 7 threats : 299.800000
+INFO:root:Memory consumption: 1.9 GB
+INFO:root:CPU-Usage on 7 threats : 163.900000
+INFO:root:Memory consumption: 1.93 GB
+INFO:root:CPU-Usage on 7 threats : 304.900000
+INFO:root:Memory consumption: 1.96 GB
+INFO:root:CPU-Usage on 7 threats : 269.700000
+INFO:root:Memory consumption: 1.96 GB
+INFO:root:CPU-Usage on 7 threats : 275.900000
+INFO:root:Memory consumption: 1.98 GB
+INFO:root:CPU-Usage on 7 threats : 421.700000
+INFO:root:Memory consumption: 1.99 GB
+INFO:root:CPU-Usage on 7 threats : 334.900000
+INFO:root:Memory consumption: 1.98 GB
+INFO:root:CPU-Usage on 7 threats : 300.700000
+INFO:root:Memory consumption: 1.98 GB
+INFO:root:CPU-Usage on 7 threats : 375.600000
+INFO:root:Memory consumption: 1.97 GB
+INFO:root:CPU-Usage on 7 threats : 386.700000
+INFO:root:Memory consumption: 1.97 GB
+INFO:root:CPU-Usage on 7 threats : 299.700000
+INFO:root:Memory consumption: 1.97 GB
+INFO:root:CPU-Usage on 7 threats : 338.600000
+INFO:root:Memory consumption: 1.97 GB
+INFO:root:CPU-Usage on 7 threats : 299.800000
+INFO:root:Memory consumption: 1.97 GB
+INFO:root:CPU-Usage on 7 threats : 299.700000
+INFO:root:Memory consumption: 1.97 GB
+INFO:root:CPU-Usage on 7 threats : 296.700000
+INFO:root:Memory consumption: 1.98 GB
+INFO:root:CPU-Usage on 7 threats : 296.700000
+INFO:root:Memory consumption: 1.97 GB
+INFO:root:CPU-Usage on 7 threats : 299.700000
+INFO:root:Memory consumption: 1.98 GB
+INFO:root:CPU-Usage on 7 threats : 396.800000
+INFO:root:Memory consumption: 2.02 GB
+INFO:root:CPU-Usage on 7 threats : 291.800000
+INFO:root:Memory consumption: 2.03 GB
+INFO:root:CPU-Usage on 7 threats : 210.900000
+INFO:root:Memory consumption: 2.06 GB
+INFO:root:CPU-Usage on 7 threats : 276.700000
+INFO:root:Memory consumption: 2.06 GB
+INFO:root:CPU-Usage on 7 threats : 198.800000
+INFO:root:Memory consumption: 2.06 GB
+INFO:root:CPU-Usage on 7 threats : 328.700000
+INFO:root:Memory consumption: 2.05 GB
+INFO:root:CPU-Usage on 7 threats : 220.900000
+INFO:root:Memory consumption: 2.06 GB
+INFO:root:CPU-Usage on 7 threats : 298.700000
+INFO:root:Memory consumption: 2.06 GB
+INFO:root:CPU-Usage on 7 threats : 321.700000
+INFO:root:Memory consumption: 2.07 GB
+INFO:root:CPU-Usage on 7 threats : 439.600000
+INFO:root:Memory consumption: 2.07 GB
+INFO:root:CPU-Usage on 7 threats : 471.700000
+INFO:root:Memory consumption: 2.15 GB
+INFO:root:CPU-Usage on 7 threats : 385.700000
+INFO:root:Memory consumption: 2.16 GB
+INFO:root:CPU-Usage on 7 threats : 100.900000
+INFO:root:Average CPU usage: 321.400000
+INFO:root:Highest CPU usage: 672.000000
+INFO:root:Average memory usage: 1.900000
+INFO:root:Highest memory usage: 2.000000
+INFO:root:0:0:19:18
+INFO:root:Nr of molecules that were duplicates: 1 
+INFO:root:Nr of molecules for which idbgen failed: 0 
+INFO:root:Starting with : test2
+INFO:root:Started
+INFO:root:################################
+INFO:root:################################
+INFO:root:idbgen test started
+INFO:root:################################
+INFO:root:################################
+INFO:root:Starting with : test2
+INFO:root:Calling /home/mwieder/Work/Software/ligandscout4//idbgen
+INFO:root:Input: ../data/decoys_final_1XL2.sdf
+INFO:root:Output: ../data/decoys_final_1XL2.ldb
+INFO:root:Options: --confgen-type icon-fast
+INFO:root:Testing: time duplicate failed
+INFO:root:Process-ID: 11185
+INFO:root:Started
+INFO:root:################################
+INFO:root:################################
+INFO:root:idbgen test started
+INFO:root:################################
+INFO:root:################################
+INFO:root:Starting with : test1
+INFO:root:Calling /home/mwieder/Work/Software/ligandscout4//idbgen
+INFO:root:Input: ../data/actives_final_1XL2.sdf
+INFO:root:Output: ../data/actives_final_1XL2.ldb
+INFO:root:Options: --confgen-type icon-fast
+INFO:root:Testing: time duplicate failed
+INFO:root:Process-ID: 11454
+INFO:root:- Watching 7 active threats
+INFO:root:  + Watching: psutil.Process(pid=11454, name='java', started='14:23:37')
+INFO:root:  + Watching: psutil.Process(pid=11523, name='java', started='14:23:38')
+INFO:root:  + Watching: psutil.Process(pid=11570, name='java', started='14:23:39')
+INFO:root:  + Watching: psutil.Process(pid=11594, name='java', started='14:23:39')
+INFO:root:  + Watching: psutil.Process(pid=11617, name='java', started='14:23:39')
+INFO:root:  + Watching: psutil.Process(pid=11639, name='java', started='14:23:41')
+INFO:root:  + Watching: psutil.Process(pid=11661, name='java', started='14:23:41')
+INFO:root:Memory consumption: 1.36 GB
+INFO:root:CPU-Usage on 7 threats : 762.500000
+INFO:root:Memory consumption: 1.45 GB
+INFO:root:CPU-Usage on 7 threats : 308.700000
+INFO:root:Memory consumption: 1.44 GB
+INFO:root:CPU-Usage on 7 threats : 299.800000
+INFO:root:Memory consumption: 1.51 GB
+INFO:root:CPU-Usage on 7 threats : 241.800000
+INFO:root:Memory consumption: 1.53 GB
+INFO:root:CPU-Usage on 7 threats : 204.800000
+INFO:root:Memory consumption: 1.55 GB
+INFO:root:CPU-Usage on 7 threats : 277.800000
+INFO:root:Memory consumption: 1.66 GB
+INFO:root:CPU-Usage on 7 threats : 165.900000
+INFO:root:Memory consumption: 1.67 GB
+INFO:root:CPU-Usage on 7 threats : 259.800000
+INFO:root:Memory consumption: 1.68 GB
+INFO:root:CPU-Usage on 7 threats : 139.900000
+INFO:root:Memory consumption: 1.68 GB
+INFO:root:CPU-Usage on 7 threats : 388.700000
+INFO:root:Memory consumption: 1.74 GB
+INFO:root:CPU-Usage on 7 threats : 435.600000
+INFO:root:Memory consumption: 1.74 GB
+INFO:root:CPU-Usage on 7 threats : 297.700000
+INFO:root:Memory consumption: 1.74 GB
+INFO:root:CPU-Usage on 7 threats : 427.500000
+INFO:root:Memory consumption: 1.75 GB
+INFO:root:CPU-Usage on 7 threats : 414.600000
+INFO:root:Memory consumption: 1.75 GB
+INFO:root:CPU-Usage on 7 threats : 298.700000
+INFO:root:Memory consumption: 1.75 GB
+INFO:root:CPU-Usage on 7 threats : 299.800000
+INFO:root:Memory consumption: 1.75 GB
+INFO:root:CPU-Usage on 7 threats : 298.800000
+INFO:root:Memory consumption: 1.77 GB
+INFO:root:CPU-Usage on 7 threats : 361.600000
+INFO:root:Memory consumption: 1.77 GB
+INFO:root:CPU-Usage on 7 threats : 197.900000
+INFO:root:Memory consumption: 1.78 GB
+INFO:root:CPU-Usage on 7 threats : 262.800000
+INFO:root:Memory consumption: 1.78 GB
+INFO:root:CPU-Usage on 7 threats : 275.800000
+INFO:root:Memory consumption: 1.78 GB
+INFO:root:CPU-Usage on 7 threats : 430.800000
+INFO:root:Memory consumption: 1.78 GB
+INFO:root:CPU-Usage on 7 threats : 213.900000
+INFO:root:Memory consumption: 1.78 GB
+INFO:root:CPU-Usage on 7 threats : 297.800000
+INFO:root:Memory consumption: 1.77 GB
+INFO:root:CPU-Usage on 7 threats : 248.800000
+INFO:root:Memory consumption: 1.79 GB
+INFO:root:CPU-Usage on 7 threats : 201.800000
+INFO:root:Memory consumption: 1.79 GB
+INFO:root:CPU-Usage on 7 threats : 324.700000
+INFO:root:Memory consumption: 1.79 GB
+INFO:root:CPU-Usage on 7 threats : 279.800000
+INFO:root:Memory consumption: 1.83 GB
+INFO:root:CPU-Usage on 7 threats : 458.600000
+INFO:root:Memory consumption: 1.84 GB
+INFO:root:CPU-Usage on 7 threats : 353.700000
+INFO:root:Memory consumption: 1.87 GB
+INFO:root:CPU-Usage on 7 threats : 298.700000
+INFO:root:Memory consumption: 1.87 GB
+INFO:root:CPU-Usage on 7 threats : 297.700000
+INFO:root:Memory consumption: 1.89 GB
+INFO:root:CPU-Usage on 7 threats : 299.700000
+INFO:root:Memory consumption: 1.88 GB
+INFO:root:CPU-Usage on 7 threats : 299.800000
+INFO:root:Memory consumption: 1.89 GB
+INFO:root:CPU-Usage on 7 threats : 343.600000
+INFO:root:Memory consumption: 1.89 GB
+INFO:root:CPU-Usage on 7 threats : 293.700000
+INFO:root:Memory consumption: 1.91 GB
+INFO:root:CPU-Usage on 7 threats : 300.700000
+INFO:root:Memory consumption: 1.91 GB
+INFO:root:CPU-Usage on 7 threats : 240.900000
+INFO:root:Memory consumption: 1.93 GB
+INFO:root:CPU-Usage on 7 threats : 259.800000
+INFO:root:Memory consumption: 1.98 GB
+INFO:root:CPU-Usage on 7 threats : 409.700000
+INFO:root:Memory consumption: 2.01 GB
+INFO:root:CPU-Usage on 7 threats : 375.700000
+INFO:root:Memory consumption: 2.03 GB
+INFO:root:CPU-Usage on 7 threats : 245.900000
+INFO:root:Memory consumption: 2.06 GB
+INFO:root:CPU-Usage on 7 threats : 371.800000
+INFO:root:Memory consumption: 2.05 GB
+INFO:root:CPU-Usage on 7 threats : 343.800000
+INFO:root:Memory consumption: 2.08 GB
+INFO:root:CPU-Usage on 7 threats : 306.700000
+INFO:root:Memory consumption: 2.09 GB
+INFO:root:CPU-Usage on 7 threats : 215.800000
+INFO:root:Memory consumption: 2.08 GB
+INFO:root:CPU-Usage on 7 threats : 299.800000
+INFO:root:Memory consumption: 2.08 GB
+INFO:root:CPU-Usage on 7 threats : 292.700000
+INFO:root:Memory consumption: 2.09 GB
+INFO:root:CPU-Usage on 7 threats : 298.700000
+INFO:root:Memory consumption: 2.09 GB
+INFO:root:CPU-Usage on 7 threats : 299.700000
+INFO:root:Memory consumption: 2.09 GB
+INFO:root:CPU-Usage on 7 threats : 297.800000
+INFO:root:Memory consumption: 2.09 GB
+INFO:root:CPU-Usage on 7 threats : 298.700000
+INFO:root:Memory consumption: 2.15 GB
+INFO:root:CPU-Usage on 7 threats : 298.700000
+INFO:root:Memory consumption: 2.15 GB
+INFO:root:CPU-Usage on 7 threats : 297.700000
+INFO:root:Memory consumption: 2.08 GB
+INFO:root:CPU-Usage on 7 threats : 302.800000
+INFO:root:Memory consumption: 2.1 GB
+INFO:root:CPU-Usage on 7 threats : 249.800000
+INFO:root:Memory consumption: 2.14 GB
+INFO:root:CPU-Usage on 7 threats : 342.800000
+INFO:root:Memory consumption: 2.13 GB
+INFO:root:CPU-Usage on 7 threats : 392.700000
+INFO:root:Memory consumption: 2.15 GB
+INFO:root:CPU-Usage on 7 threats : 299.700000
+INFO:root:Memory consumption: 2.16 GB
+INFO:root:CPU-Usage on 7 threats : 214.800000
+INFO:root:Memory consumption: 2.15 GB
+INFO:root:CPU-Usage on 7 threats : 548.500000
+INFO:root:Memory consumption: 2.14 GB
+INFO:root:CPU-Usage on 7 threats : 300.800000
+INFO:root:Memory consumption: 2.14 GB
+INFO:root:CPU-Usage on 7 threats : 489.500000
+INFO:root:Memory consumption: 2.13 GB
+INFO:root:CPU-Usage on 7 threats : 277.700000
+INFO:root:Memory consumption: 2.13 GB
+INFO:root:CPU-Usage on 7 threats : 343.700000
+INFO:root:Memory consumption: 2.1 GB
+INFO:root:CPU-Usage on 7 threats : 308.700000
+INFO:root:Memory consumption: 2.09 GB

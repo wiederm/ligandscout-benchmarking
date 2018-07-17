@@ -1,0 +1,81 @@
+
+---
+iscreen:
+  test1:
+    library:
+      actives_final_1XL2.ldb
+    ph:
+      1XL2.pml
+    hitlist:
+      1XL2-vs-actives-final.sdf
+    options:
+      some-options
+    evaluate:
+      time
+      hits
+  
+  test2:
+    library:
+      decoys_final_1XL2.ldb
+    ph:
+      1XL2.pml
+    options:
+      some-options
+    evaluate:
+      time
+      hits
+
+espresso:
+  test1:t
+    db:t
+    options:t
+  
+idbgen:
+  test1:
+    input:
+      actives_final_1XL2.sdf
+    options:
+      '--confgen-type icon-fast'
+    output:
+      actives_final_1XL2.ldb
+    evaluate:
+      time
+      duplicate
+      failed
+  test2:
+    input:
+      decoys_final_1XL2.sdf
+    options:
+      '--confgen-type icon-fast'
+    output:
+      decoys_final_1XL2.ldb
+    evaluate:
+      time
+      duplicate
+      failed
+  test3:
+    input:
+      actives_final_1XL2.sdf
+    options:
+      '--confgen-type icon-fast'
+    output:
+      actives_final_1XL2.ldb
+    evaluate:
+      time
+      duplicate
+      failed
+  test4:
+    input:
+      decoys_final_1XL2.sdf
+    options:
+      '--confgen-type icon-fast'
+    output:
+      decoys_final_1XL2.ldb
+    evaluate:
+      time
+      duplicate
+      failed
+
+  
+
+...
