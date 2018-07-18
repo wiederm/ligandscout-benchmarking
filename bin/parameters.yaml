@@ -1,36 +1,64 @@
 
 ---
+########
 iscreen:
+########
+  ########
   test1:
     library:
-      actives_final_1XL2.ldb
+      decoys_final_1XL2.ldb
     ph:
       1XL2.pml
     hitlist:
-      1XL2-vs-actives-final.sdf
+      1XL2-vs-decoys_final_1XL2.sdf
     options:
-      some-options
+      --allow-omit 0
     evaluate:
       time
       hits
   
+  ########
   test2:
     library:
       decoys_final_1XL2.ldb
     ph:
       1XL2.pml
+    hitlist:
+      1XL2-vs-decoys_final_1XL2-omit-1.sdf
     options:
-      some-options
+      --allow-omit 1
+    evaluate:
+      time
+      hits
+  
+  ########
+  test3:
+    library:
+      decoys_final_1XL2.ldb
+    ph:
+      1XL2.pml
+    hitlist:
+      1XL2-vs-decoys_final_1XL2-omit-2.sdf
+    options:
+      --allow-omit 2
     evaluate:
       time
       hits
 
+########
 espresso:
-  test1:t
-    db:t
-    options:t
+########
+  ########
+  test1:
+    db:
+      some-things
+    options:
+      some-things
   
+########
 idbgen:
+########
+  ########
   test1:
     input:
       actives_final_1XL2.sdf
@@ -42,7 +70,20 @@ idbgen:
       time
       duplicate
       failed
+  ########
   test2:
+    input:
+      actives_final_1XL2.sdf
+    options:
+      '--confgen-type icon-fast --num-cores 2'
+    output:
+      actives_final_1XL2.ldb
+    evaluate:
+      time
+      duplicate
+      failed
+  ########
+  test3:
     input:
       decoys_final_1XL2.sdf
     options:
@@ -53,22 +94,12 @@ idbgen:
       time
       duplicate
       failed
-  test3:
-    input:
-      actives_final_1XL2.sdf
-    options:
-      '--confgen-type icon-fast'
-    output:
-      actives_final_1XL2.ldb
-    evaluate:
-      time
-      duplicate
-      failed
+  ########
   test4:
     input:
       decoys_final_1XL2.sdf
     options:
-      '--confgen-type icon-fast'
+      '--confgen-type icon-best'
     output:
       decoys_final_1XL2.ldb
     evaluate:
@@ -76,6 +107,5 @@ idbgen:
       duplicate
       failed
 
-  
 
 ...

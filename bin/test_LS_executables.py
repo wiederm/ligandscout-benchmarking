@@ -33,7 +33,6 @@ def _monitoring_memory_consumption():
             process = psutil.Process(pid.pid)
             memory += process.memory_info().rss
         except psutil.NoSuchProcess:
-            print('No such process ...')
             return 0
     logging.info('Memory consumption: %s' % str(_convert_size(memory)))
     return _convert_size(memory)
@@ -47,7 +46,6 @@ def _monitoring_cpu_consumption():
             cpu += process.cpu_percent(interval=1)
 
         except psutil.NoSuchProcess:
-            print('No such process ...')
             return 0
     logging.info('CPU-Usage on %d threats : %f' % ( int(len(all_pids_as_list)), float(round(cpu, 1))))
     return round(cpu, 1)
@@ -68,7 +66,7 @@ def print_log(str_arg):
 def monitor_process(proc):
     pid = proc.pid
     logging.info('Process-ID: %d' % pid)
-    time.sleep(10)
+    time.sleep(5)
     all_pids_as_list = _get_pid_list()
     logging.info('- Watching %d active threats' % len(all_pids_as_list))
 
@@ -80,15 +78,19 @@ def monitor_process(proc):
     nr_of_steps = 0
 
     while(proc.poll() == None):
-        memory.append(float(_monitoring_memory_consumption().split()[0]))
-        cpu.append(float(_monitoring_cpu_consumption()))
+        memory_at_the_moment, units = _monitoring_memory_consumption().split()
+        if memory_at_the_moment != 0:
+            memory.append(float(memory_at_the_moment))
+        cpu_at_the_moment = _monitoring_cpu_consumption()
+        if cpu_at_the_moment != 0:
+            cpu.append(float(cpu_at_the_moment))
         nr_of_steps += 1
-        time.sleep(10)
+        time.sleep(5)
 
     print_log('Average CPU usage: %f' % round(sum(cpu)/ nr_of_steps, 1))
     print_log('Highest CPU usage: %f' % round(max(cpu)))
-    print_log('Average memory usage: %f' % round(sum(memory)/ nr_of_steps, 1))
-    print_log('Highest memory usage: %f' % round(max(memory)))
+    print_log('Average memory usage: [%s] %f' % (str(units), round(sum(memory)/ nr_of_steps, 1)))
+    print_log('Highest memory usage: [%s] %f' % (str(units), round(max(memory))))
 
 
 def _convert_size(size_bytes):
@@ -107,20 +109,20 @@ def _get_time(took_time):
     print_log("%d:%d:%d:%d" % (d.day-1, d.hour, d.minute, d.second))
     return "%d:%d:%d:%d" % (d.day-1, d.hour, d.minute, d.second)
 
-def _write_test_result(test_nr, value, type_of_test):
+def _write_test_result(cmd_line_tool, test_nr, value, type_of_test):
 
-    file = open(str(test_nr) + '_' + str(type_of_test) + '.txt', 'w+')
-    file.write(value)
+    file = open('../test_results/' + str(cmd_line_tool) + '_' + str(test_nr) + '_' + str(type_of_test) + '.txt', 'w+')
+    file.write(str(value) + ' ,')
 
 
 def _test_for_duplicates_in_log():
     pass
 
-def evaluating_output(took_time, tests, output, test_nr):
+def evaluating_output(cmd_line_tool, took_time, tests, output, test_nr):
     
     if 'time' in tests:
         value = _get_time(took_time)
-        _write_test_result(test_nr, value, 'time')
+        _write_test_result(cmd_line_tool, test_nr, value, 'time')
 
 
     if 'duplicate' in tests:
@@ -141,7 +143,7 @@ def evaluating_output(took_time, tests, output, test_nr):
             print_log('Could not read file: %s' % log_file)
         print_log('Nr of molecules that were duplicates: %i ' % nr_of_found_duplicates)
         print(found_duplicates)
-        _write_test_result(test_nr, nr_of_found_duplicates, 'duplicate')
+        _write_test_result(cmd_line_tool, test_nr, nr_of_found_duplicates, 'duplicate')
 
 
     if 'failed' in tests:
@@ -162,7 +164,7 @@ def evaluating_output(took_time, tests, output, test_nr):
             print_log('Could not read file: %s' % log_file)
         print_log('Nr of molecules for which idbgen failed: %i ' % nr_of_failed_molecules)
         print(failed_molecules)
-        _write_test_result(test_nr, nr_of_failed_molecules, 'failed')
+        _write_test_result(cmd_line_tool, test_nr, nr_of_failed_molecules, 'failed')
 
 
     if 'hits' in tests:
@@ -195,11 +197,15 @@ def testing_idbgen(args, settingsMap):
         ti0 = time.time()
         proc = Popen([executable, '--input', input, '--output', output, arguments])#, stdout=DEVNULL, stderr=DEVNULL)
         monitor_process(proc)
-        time.sleep(5)
         ti1 = time.time()
-        took_time = ti1 - ti0 # time in seconds
+        took_time = ti1 - ti0 - 5 # time in seconds (-5 because of the sleep call in monitor_process())
+        time.sleep(5)
 
-        evaluating_output(took_time, tests, str(settingsMap['idbgen'][test]['output']), test)
+        evaluating_output('idbgen', took_time, tests, str(settingsMap['idbgen'][test]['output']), test)
+        
+        date = datetime.now()
+
+        _write_test_result('idbgen', test, date, 'dates')
 
 def testing_iscreen(args, settingsMap):
     print_log('################################')
@@ -229,17 +235,21 @@ def testing_iscreen(args, settingsMap):
         ti0 = time.time()
         proc = Popen([executable, '--database', screening_library, '--query', ph, '--output', hitlist, arguments])#, stdout=DEVNULL, stderr=DEVNULL)
         monitor_process(proc)
-        time.sleep(5)
         ti1 = time.time()
-        took_time = ti1 - ti0 # time in seconds
+        took_time = ti1 - ti0 - 5 # time in seconds (-5 because of the sleep call in monitor_process())
+        time.sleep(5)
 
-        evaluating_output(took_time, tests, str(settingsMap['idbgen'][test]['output']), test)
+        evaluating_output('iscreen', took_time, tests, str(settingsMap['idbgen'][test]['output']), test)
+        date = datetime.now()
+
+        _write_test_result('iscreen', test, date, 'dates')
 
 
 def process_yaml(args, settingsMap):
-
+    print_log(datetime.now())
     # start with idbgen
-    testing_idbgen(args, settingsMap)
+    #testing_idbgen(args, settingsMap)
+    # testing iscreen
     testing_iscreen(args, settingsMap)
 
 
