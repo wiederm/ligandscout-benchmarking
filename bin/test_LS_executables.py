@@ -1,4 +1,4 @@
-import os, psutil
+import os, psutil, re, shutil
 from subprocess import Popen, check_output, DEVNULL
 import argparse
 import yaml
@@ -91,6 +91,13 @@ def monitor_process(proc):
     print_log('Highest CPU usage: %f' % round(max(cpu)))
     print_log('Average memory usage: [%s] %f' % (str(units), round(sum(memory)/ nr_of_steps, 1)))
     print_log('Highest memory usage: [%s] %f' % (str(units), round(max(memory))))
+    
+    d = dict()
+    d['average-cpu'] = round(sum(cpu)/ nr_of_steps, 1)
+    d['highest-cpu'] = round(round(max(cpu)))
+    d['average-mem'] = round(sum(memory)/ nr_of_steps, 1)
+    d['highest-mem'] = round(max(memory))
+    return d
 
 
 def _convert_size(size_bytes):
@@ -111,67 +118,84 @@ def _get_time(took_time):
 
 def _write_test_result(cmd_line_tool, test_nr, value, type_of_test):
 
-    file = open('../test_results/' + str(cmd_line_tool) + '_' + str(test_nr) + '_' + str(type_of_test) + '.txt', 'w+')
+    file = open('../test_results/' + str(cmd_line_tool) + '_' + str(test_nr) + '_' + str(type_of_test) + '.txt', 'a')
     file.write(str(value) + ' ,')
 
 
-def _test_for_duplicates_in_log():
-    pass
+def evaluating_output(cmd_line_tool, took_time, tests, output, test_nr, d, logfile):
 
-def evaluating_output(cmd_line_tool, took_time, tests, output, test_nr):
-    
+    for key in d:
+        _write_test_result(cmd_line_tool, test_nr, d[key], key)
+ 
     if 'time' in tests:
-        value = _get_time(took_time)
+        #value = _get_time(took_time)
+        value = int(took_time)
         _write_test_result(cmd_line_tool, test_nr, value, 'time')
 
+    if 'inserted' in tests:
+        inserted = None
+        try:
+            with open(logfile, 'r') as f:
+                for line in f:
+                    if 'Molecules inserted' in line:
+                        inserted = int(re.search(r'\d+', line).group())
+                
+        except IOError:
+            print_log('Could not read file: %s' % logfile)
+        print_log('Nr of molecules that idbgen inserted: %i ' % inserted)
+        _write_test_result(cmd_line_tool, test_nr, inserted, 'inserted')
 
     if 'duplicate' in tests:
-        
         output_base = output.split('.')[0]
         nr_of_found_duplicates = 0
         found_duplicates = []
 
-        log_file = '../data/' + str(output_base) + '-failed.log'
+        log_file = '../test_data/' + str(output_base) + '-failed.log'
         try:
             with open(log_file, 'r') as f:
-                line = f.readline()
-                if 'duplicate' in line:
-                    nr_of_found_duplicates += 1
-                    found_duplicates.append(line)
+                for line in f:
+                    if 'duplicate' in line:
+                        nr_of_found_duplicates += 1
+                        found_duplicates.append(line)
                 
         except IOError:
             print_log('Could not read file: %s' % log_file)
         print_log('Nr of molecules that were duplicates: %i ' % nr_of_found_duplicates)
-        print(found_duplicates)
         _write_test_result(cmd_line_tool, test_nr, nr_of_found_duplicates, 'duplicate')
 
-
     if 'failed' in tests:
-        
         output_base = output.split('.')[0]
         nr_of_failed_molecules = 0
         failed_molecules = []
 
-        log_file = '../data/' + str(output_base) + '-failed.log'
+        log_file = '../test_data/' + str(output_base) + '-failed.log'
         try:
             with open(log_file, 'r') as f:
-                line = f.readline()
-                if 'failed' in line:
-                    nr_of_failed_molecules += 1
-                    failed_molecules.append(line)
+                for line in f:
+                    if 'failed' in line:
+                        nr_of_failed_molecules += 1
+                        failed_molecules.append(line)
                 
         except IOError:
             print_log('Could not read file: %s' % log_file)
         print_log('Nr of molecules for which idbgen failed: %i ' % nr_of_failed_molecules)
-        print(failed_molecules)
         _write_test_result(cmd_line_tool, test_nr, nr_of_failed_molecules, 'failed')
 
-
     if 'hits' in tests:
-        pass
+        found_hits = None
+        try:
+            with open(logfile, 'r') as f:
+                for line in f:
+                    if 'virtual hits' in line:
+                        found_hits = int(re.search(r' \d+ ', line).group())
+                
+        except IOError:
+            print_log('Could not read file: %s' % logfile)
+        print_log('Nr of molecules that iscreen found: %i ' % found_hits)
+        _write_test_result(cmd_line_tool, test_nr, found_hits, 'hits')
 
 
-def testing_idbgen(args, settingsMap):
+def testing_idbgen(args, settingsMap, date):
     print_log('################################')
     print_log('################################')
     print_log('idbgen test started')
@@ -180,34 +204,37 @@ def testing_idbgen(args, settingsMap):
 
     
     for test in settingsMap['idbgen']:
+        print_log('################################')
         print_log('Starting with : %s' % test)
+        print_log('################################')
 
         input = '../data/' + settingsMap['idbgen'][test]['input']
-        output = '../data/' + settingsMap['idbgen'][test]['output']
+        output = '../test_data/' + settingsMap['idbgen'][test]['output']
         arguments = settingsMap['idbgen'][test]['options']
         tests = settingsMap['idbgen'][test]['evaluate']
         executable = args.ls_base + '/idbgen' 
 
         print_log('Calling %s' % executable)
         print_log('Input: %s' % input)
+        logfile = '../test_data/' + output.split('/')[-1].split('.')[0] + '.log'
+
         print_log('Output: %s' % output)
         print_log('Options: %s' % arguments)
         print_log('Testing: %s' % tests)
+        print_log('Logfile: %s' % logfile)
 
         ti0 = time.time()
-        proc = Popen([executable, '--input', input, '--output', output, arguments])#, stdout=DEVNULL, stderr=DEVNULL)
-        monitor_process(proc)
+        proc = Popen([executable, '--input', input, '--output', output, '--log', logfile, arguments])#, stdout=DEVNULL, stderr=DEVNULL)
+        d = monitor_process(proc)
         ti1 = time.time()
         took_time = ti1 - ti0 - 5 # time in seconds (-5 because of the sleep call in monitor_process())
         time.sleep(5)
 
-        evaluating_output('idbgen', took_time, tests, str(settingsMap['idbgen'][test]['output']), test)
+        evaluating_output('idbgen', took_time, tests, str(settingsMap['idbgen'][test]['output']), test, d, logfile)
         
-        date = datetime.now()
-
         _write_test_result('idbgen', test, date, 'dates')
 
-def testing_iscreen(args, settingsMap):
+def testing_iscreen(args, settingsMap, date):
     print_log('################################')
     print_log('################################')
     print_log('iscreen test started')
@@ -216,12 +243,16 @@ def testing_iscreen(args, settingsMap):
 
     
     for test in settingsMap['iscreen']:
+        print_log('################################')
         print_log('Starting with : %s' % test)
+        print_log('################################')
 
-        screening_library = '../data/' + settingsMap['iscreen'][test]['library']
+
+        screening_library = '../test_data/' + settingsMap['iscreen'][test]['library']
         ph = '../data/' + settingsMap['iscreen'][test]['ph']
         arguments = settingsMap['iscreen'][test]['options']
-        hitlist = settingsMap['iscreen'][test]['hitlist']
+        hitlist = '../test_data/' + settingsMap['iscreen'][test]['hitlist']
+        logfile = '../test_data/' + hitlist.split('/')[-1].split('.')[0] + '.log'
         tests = settingsMap['iscreen'][test]['evaluate']
         executable = args.ls_base + '/iscreen' 
 
@@ -231,26 +262,29 @@ def testing_iscreen(args, settingsMap):
         print_log('Hitlist: %s' % hitlist)
         print_log('Options: %s' % arguments)
         print_log('Testing: %s' % tests)
+        print_log('Logfile: %s' % logfile)
+
 
         ti0 = time.time()
-        proc = Popen([executable, '--database', screening_library, '--query', ph, '--output', hitlist, arguments])#, stdout=DEVNULL, stderr=DEVNULL)
-        monitor_process(proc)
+        proc = Popen([executable, '--database', screening_library, '--query', ph, '--output', hitlist, '--log',  logfile, arguments])#, stdout=DEVNULL, stderr=DEVNULL)
+        d = monitor_process(proc)
         ti1 = time.time()
         took_time = ti1 - ti0 - 5 # time in seconds (-5 because of the sleep call in monitor_process())
         time.sleep(5)
 
-        evaluating_output('iscreen', took_time, tests, str(settingsMap['idbgen'][test]['output']), test)
-        date = datetime.now()
+        evaluating_output('iscreen', took_time, tests, str(settingsMap['idbgen'][test]['output']), test, d, logfile)
 
         _write_test_result('iscreen', test, date, 'dates')
 
 
 def process_yaml(args, settingsMap):
-    print_log(datetime.now())
+    date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    print_log(date)
+
     # start with idbgen
-    #testing_idbgen(args, settingsMap)
+    testing_idbgen(args, settingsMap, date)
     # testing iscreen
-    testing_iscreen(args, settingsMap)
+    testing_iscreen(args, settingsMap, date)
 
 
 if __name__ == '__main__':
@@ -258,6 +292,13 @@ if __name__ == '__main__':
     logging.basicConfig(filename='../log/LS_executable_test.log',level=logging.DEBUG)
     logging.basicConfig(format='%(asctime)s %(message)s')
     logging.info('Started')
+
+    output_dir = '../test_data'
+
+    if os.path.exists(output_dir):
+        shutil.rmtree(output_dir)
+    os.makedirs(output_dir)
+
 
     args = parse_arguments()
     settingsMap = load_yaml(args)

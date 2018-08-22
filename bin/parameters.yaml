@@ -45,6 +45,148 @@ iscreen:
       time
       hits
 
+  ########
+  test4:
+    library:
+      actives_final_3TOF.ldb
+    ph:
+      3TOF.pml
+    hitlist:
+      3TOF-vs-actives_final_3TOF.sdf
+    options:
+      --allow-omit 0
+    evaluate:
+      time
+      hits
+  
+  ########
+  test5:
+    library:
+      actives_final_3TOF.ldb
+    ph:
+      3TOF.pml
+    hitlist:
+      3TOF-vs-actives_final_3TOF-omit-1.sdf
+    options:
+      --allow-omit 1
+    evaluate:
+      time
+      hits
+  
+  ########
+  test6:
+    library:
+      actives_final_3TOF.ldb
+    ph:
+      3TOF.pml
+    hitlist:
+      3TOF-vs-actives_final_3TOF-omit-2.sdf
+    options:
+      --allow-omit 2
+    evaluate:
+      time
+      hits
+
+  ########
+  test7:
+    library:
+      decoys_final_3TOF.ldb
+    ph:
+      3TOF.pml
+    hitlist:
+      3TOF-vs-decoys_final_3TOF.sdf
+    options:
+      --allow-omit 0
+    evaluate:
+      time
+      hits
+  
+  ########
+  test8:
+    library:
+      decoys_final_3TOF.ldb
+    ph:
+      3TOF.pml
+    hitlist:
+      3TOF-vs-decoys_final_3TOF-omit-1.sdf
+    options:
+      --allow-omit 1
+    evaluate:
+      time
+      hits
+  
+  ########
+  test9:
+    library:
+      decoys_final_3TOF.ldb
+    ph:
+      3TOF.pml
+    hitlist:
+      3TOF-vs-decoys_final_3TOF-omit-2.sdf
+    options:
+      --allow-omit 2
+    evaluate:
+      time
+      hits
+
+  ########
+  test10:
+    library:
+      decoys_final_3KBA.ldb
+    ph:
+      3KBA.pml
+    hitlist:
+      3KBA-vs-decoys_final_3KBA.sdf
+    options:
+      --allow-omit 0
+    evaluate:
+      time
+      hits
+  
+  ########
+  test11:
+    library:
+      actives_final_3KBA.ldb
+    ph:
+      3KBA.pml
+    hitlist:
+      3KBA-vs-decoys_final_3KBA.sdf
+    options:
+      --allow-omit 0
+    evaluate:
+      time
+      hits
+
+  ########
+  test12:
+    library:
+      decoys_final_3KBA.ldb
+    ph:
+      3KBA.pml
+    hitlist:
+      3KBA-vs-decoys_final_3KBA-omit-1.sdf
+    options:
+      --allow-omit 1
+    evaluate:
+      time
+      hits
+  
+  ########
+  test13:
+    library:
+      actives_final_3KBA.ldb
+    ph:
+      3KBA.pml
+    hitlist:
+      3KBA-vs-decoys_final_3KBA-omit-1.sdf
+    options:
+      --allow-omit 1
+    evaluate:
+      time
+      hits
+
+
+
 ########
 espresso:
 ########
@@ -58,10 +200,11 @@ espresso:
 ########
 idbgen:
 ########
+  
   ########
   test1:
     input:
-      actives_final_1XL2.sdf
+      actives_final_1XL2.sdf.gz
     options:
       '--confgen-type icon-fast'
     output:
@@ -69,23 +212,13 @@ idbgen:
     evaluate:
       time
       duplicate
+      inserted
       failed
+  
   ########
   test2:
     input:
-      actives_final_1XL2.sdf
-    options:
-      '--confgen-type icon-fast --num-cores 2'
-    output:
-      actives_final_1XL2.ldb
-    evaluate:
-      time
-      duplicate
-      failed
-  ########
-  test3:
-    input:
-      decoys_final_1XL2.sdf
+      decoys_final_1XL2.sdf.gz
     options:
       '--confgen-type icon-fast'
     output:
@@ -93,18 +226,231 @@ idbgen:
     evaluate:
       time
       duplicate
+      inserted
       failed
+
   ########
-  test4:
+  test3:
     input:
-      decoys_final_1XL2.sdf
+      actives_final_3TOF.sdf.gz
     options:
-      '--confgen-type icon-best'
+      '--confgen-type icon-fast'
     output:
-      decoys_final_1XL2.ldb
+      actives_final_3TOF.ldb
     evaluate:
       time
       duplicate
+      inserted
+      failed
+  
+  ########
+  test4:
+    input:
+      decoys_final_3TOF.sdf.gz
+    options:
+      '--confgen-type icon-fast'
+    output:
+      decoys_final_3TOF.ldb
+    evaluate:
+      time
+      duplicate
+      inserted
+      failed
+
+  ########
+  test5:
+    input:
+      actives_final_1XL2.sdf.gz
+    options:
+      '--confgen-type icon-best'
+    output:
+      actives_final_1XL2-icon-best.ldb
+    evaluate:
+      time
+      duplicate
+      inserted
+      failed
+
+  ########
+  test6:
+    input:
+      actives_final_3TOF.sdf.gz
+    options:
+      '--confgen-type icon-best'
+    output:
+      actives_final_3TOF-icon-best.ldb
+    evaluate:
+      time
+      duplicate
+      inserted
+      failed
+
+  ########
+  test7:
+    input:
+      actives_final_1XL2.sdf.gz
+    options:
+      '--confgen-type icon-best --hydrophob_threshold 0.2'
+    output:
+      actives_final_1XL2-icon-best-hydrophob-threshold-20.ldb
+    evaluate:
+      time
+      duplicate
+      inserted
+      failed
+
+  ########
+  test8:
+    input:
+      actives_final_3TOF.sdf.gz
+    options:
+      '--confgen-type icon-best --hydrophob_threshold 0.2'
+    output:
+      actives_final_3TOF-icon-best-hydrophob-threshold-20.ldb
+    evaluate:
+      time
+      duplicate
+      inserted
+      failed
+
+  ########
+  test9:
+    input:
+      actives_final_1XL2.sdf.gz
+    options:
+      '--confgen-type icon-best --hydrophob_threshold 0.4'
+    output:
+      actives_final_1XL2-icon-best-hydrophob-threshold-40.ldb
+    evaluate:
+      time
+      duplicate
+      inserted
+      failed
+
+  ########
+  test10:
+    input:
+      actives_final_3TOF.sdf.gz
+    options:
+      '--confgen-type icon-best --hydrophob_threshold 0.4'
+    output:
+      actives_final_3TOF-icon-best-hydrophob-threshold-40.ldb
+    evaluate:
+      time
+      duplicate
+      inserted
+      failed
+
+  ########
+  test11:
+    input:
+      actives_final_1XL2.sdf.gz
+    options:
+      '--confgen-type icon-best --hydrophob_threshold 0.6'
+    output:
+      actives_final_1XL2-icon-best-hydrophob-threshold-60.ldb
+    evaluate:
+      time
+      duplicate
+      inserted
+      failed
+
+  ########
+  test12:
+    input:
+      actives_final_3TOF.sdf.gz
+    options:
+      '--confgen-type icon-best --hydrophob_threshold 0.6'
+    output:
+      actives_final_3TOF-icon-best-hydrophob-threshold-60.ldb
+    evaluate:
+      time
+      duplicate
+      inserted
+      failed
+
+  ########
+  test13:
+    input:
+      actives_final_1XL2.sdf.gz
+    options:
+      '--confgen-type icon-best --max-molweight 50'
+    output:
+      actives_final_1XL2-icon-best-max-molweight-50.ldb
+    evaluate:
+      time
+      duplicate
+      inserted
+      failed
+
+  ########
+  test14:
+    input:
+      actives_final_3TOF.sdf.gz
+    options:
+      '--confgen-type icon-best --max-molweight 50'
+    output:
+      actives_final_3TOF-icon-best-max-molweight-50.ldb
+    evaluate:
+      time
+      duplicate
+      inserted
+      failed
+
+  ########
+  test15:
+    input:
+      actives_final_1XL2.sdf.gz
+    options:
+      '--confgen-type icon-best --max-molweight 150'
+    output:
+      actives_final_1XL2-icon-best-max-molweight-150.ldb
+    evaluate:
+      time
+      duplicate
+      inserted
+      failed
+
+  ########
+  test16:
+    input:
+      actives_final_3TOF.sdf.gz
+    options:
+      '--confgen-type icon-best --max-molweight 150'
+    output:
+      actives_final_3TOF-icon-best-max-molweight-150.ldb
+    evaluate:
+      time
+      duplicate
+      inserted
+      failed
+
+  ########
+  test17:
+    input:
+      actives_final_3KBA.sdf.gz
+    options:
+      '--confgen-type icon-fast'
+    output:
+      actives_final_3KBA.ldb
+    evaluate:
+      time
+      duplicate
+      inserted
+      failed
+  
+  ########
+  test18:
+    input:
+      decoys_final_3KBA.sdf.gz
+    options:
+      '--confgen-type icon-fast'
+    output:
+      decoys_final_3KBA.ldb
+    evaluate:
+      time
+      duplicate
+      inserted
       failed
 
 
