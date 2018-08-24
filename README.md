@@ -1,4 +1,4 @@
-# ligandscout-testing
+# ligandscout-benchmarking
 
 The test_LS_executables.py script tests three LigandScout executables (iscreen, idbgen, espresso) on local computers (a7pc82-87, a7srv2) and on the cluster (hydra) executing 
 
