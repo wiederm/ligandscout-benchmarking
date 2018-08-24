@@ -90,8 +90,8 @@ iscreen:
         hits
 
 
-  ########
-  ########
+  ################
+  ################
   local:
     ########
     test1:
@@ -275,25 +275,52 @@ iscreen:
         time
         hits
 
+    ########
+    test14:
+      library:
+        DB.ldb
+      ph:
+        3KBA.pml
+      hitlist:
+        3KBA-vs-DB.sdf
+      options:
+        --allow-omit 1
+      evaluate:
+        time
+        hits
+
+    ########
+    test15:
+      library:
+        DB.ldb
+      ph:
+        1XL2.pml
+      hitlist:
+        1XL2-vs-DB.sdf
+      options:
+        --allow-omit 1
+      evaluate:
+        time
+        hits
 
 
-########
+################
 espresso:
-########
-  ########
+################
+  ################
   test1:
     db:
       some-things
     options:
       some-things
   
-########
+################
 idbgen:
-########
-  ########
-  ########
+################
+  ################
+  ################
   local:
-    ########
+    ################
     test1:
       input:
         actives_final_1XL2.sdf.gz
@@ -377,10 +404,25 @@ idbgen:
         duplicate
         inserted
         failed
-  ########
-  ########
-  cluster:
+
     ########
+    test7:
+      input:
+        DB.sdf.gz
+      options:
+        '--confgen-type icon-fast'
+      output:
+        DB.ldb
+      evaluate:
+        time
+        duplicate
+        inserted
+        failed
+
+  ################
+  ################
+  cluster:
+    ################
     test1:
       input:
         DB.sdf.gz
