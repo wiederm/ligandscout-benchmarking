@@ -1,4 +1,4 @@
-import os, psutil, re, shutil, sys
+import os, psutil, re, shutil, sys, glob, socket
 from subprocess import Popen, check_output, DEVNULL
 import argparse
 import yaml
@@ -14,9 +14,9 @@ def parse_arguments():
     parser = argparse.ArgumentParser()
     parser.add_argument('-l', dest="ls_base", required=True, help="specify the installation directory of LigandScout")
     parser.add_argument('-y', dest="yaml", required=True, help="specify optinos for test of LigandScout")
-    parser.add_argument('-r', dest='host', required=True, help="specify the hostname [local/a7srv2/hydra")
     args = parser.parse_args()
-    return args
+    hostname = socket.gethostname()
+    return args, hostname
 
 def load_yaml(args):
     with open(args.yaml, 'r') as stream:
@@ -68,7 +68,7 @@ def print_log(str_arg):
 def monitor_process(proc):
     pid = proc.pid
     logging.info('Process-ID: %d' % pid)
-    time.sleep(5)
+    time.sleep(1)
     all_pids_as_list = _get_pid_list()
     logging.info('- Watching %d active threats' % len(all_pids_as_list))
 
@@ -93,6 +93,9 @@ def monitor_process(proc):
     if int(nr_of_steps) == 0:
         nr_of_steps = 1
     
+    if len(cpu) == 0:
+        cpu.append(0)
+
     print_log('Average CPU usage: %f' % round(sum(cpu)/ nr_of_steps, 1))
     print_log('Highest CPU usage: %f' % round(max(cpu)))
     print_log('Average memory usage: [%s] %f' % (str(units), round(sum(memory)/ nr_of_steps, 1)))
@@ -156,13 +159,14 @@ def evaluating_output(cmd_line_tool, took_time, tests, output, test_nr, d, logfi
         nr_of_found_duplicates = 0
         found_duplicates = []
 
-        log_file = '../test_data/' + str(output_base) + '-failed.log'
+        log_file = '../test_data/' + str(output_base) + '*-failed.log'
         try:
-            with open(log_file, 'r') as f:
-                for line in f:
-                    if 'duplicate' in line:
-                        nr_of_found_duplicates += 1
-                        found_duplicates.append(line)
+            for filename in glob.glob(log_file):
+                with open(filename, 'r') as f:
+                    for line in f:
+                        if 'duplicate' in line:
+                            nr_of_found_duplicates += 1
+                            found_duplicates.append(line)
                 
         except IOError:
             print_log('Could not read file: %s' % log_file)
@@ -174,33 +178,34 @@ def evaluating_output(cmd_line_tool, took_time, tests, output, test_nr, d, logfi
         nr_of_failed_molecules = 0
         failed_molecules = []
 
-        log_file = '../test_data/' + str(output_base) + '-failed.log'
+        log_file = '../test_data/' + str(output_base) + '*-failed.log'
         try:
-            with open(log_file, 'r') as f:
-                for line in f:
-                    if 'failed' in line:
-                        nr_of_failed_molecules += 1
-                        failed_molecules.append(line)
-                
+            for filename in glob.glob(log_file):
+                with open(filename, 'r') as f:
+                    for line in f:
+                        if 'failed' in line or 'GC overhead' in line or 'Could not minimize' in line:
+                            nr_of_failed_molecules += 1
+                            failed_molecules.append(line)
+                    
         except IOError:
             print_log('Could not read file: %s' % log_file)
         print_log('Nr of molecules for which idbgen failed: %i ' % nr_of_failed_molecules)
         _write_test_result(cmd_line_tool, test_nr, nr_of_failed_molecules, 'failed')
 
     if 'hits' in tests:
-        found_hits = None
+        found_hits = 0
         try:
-            with open(logfile, 'r') as f:
+            with open('../test_data/' + output, 'r') as f:
                 for line in f:
-                    if 'virtual hits' in line:
-                        found_hits = int(re.search(r' \d+ ', line).group())
+                    if '$$$' in line:
+                        found_hits += 1
                 
         except IOError:
-            print_log('Could not read file: %s' % logfile)
+            print_log('Could not read file: %s' % output)
         print_log('Nr of molecules that iscreen found: %i ' % found_hits)
         _write_test_result(cmd_line_tool, test_nr, found_hits, 'hits')
 
-def testing_cluster_idgen(args, settingsMap, date):
+def testing_cluster_idgen(args, settingsMap, date, hostname):
     print_log('################################')
     print_log('################################')
     print_log('idbgen cluster test started')
@@ -216,11 +221,11 @@ def testing_cluster_idgen(args, settingsMap, date):
         output = '../test_data/' + settingsMap['idbgen']['cluster'][test]['output']
         arguments = settingsMap['idbgen']['cluster'][test]['options']
         tests = settingsMap['idbgen']['cluster'][test]['evaluate']
-        executable = '/data/shared/software/hydra' + '/test.sh' 
+        executable = '/data/shared/software/hydra' + '/idbgen_bench.sh' 
 
         print_log('Calling %s' % executable)
         print_log('Input: %s' % input)
-        print_log('Host: %s' % str(args.host))
+        print_log('Host: %s' % str(hostname))
         logfile = '../test_data/' + output.split('/')[-1].split('.')[0] + '.log'
         print_log('Output: %s' % output)
         print_log('Qsub-Name: %s' % qsub_name)
@@ -237,10 +242,10 @@ def testing_cluster_idgen(args, settingsMap, date):
         took_time = ti1 - ti0 - 5 # time in seconds (-5 because of the sleep call in monitor_process())
         time.sleep(5)
         d = dict()
-        evaluating_output('idbgen-' + str(args.host), took_time, tests, str(settingsMap['idbgen']['cluster'][test]['output']), test, d, logfile)
-        _write_test_result('idbgen-' + str(args.host), test, date, 'dates')
+        evaluating_output('idbgen-' + str(hostname), took_time, tests, str(settingsMap['idbgen']['cluster'][test]['output']), test, d, logfile)
+        _write_test_result('idbgen-' + str(hostname), test, date, 'dates')
 
-def testing_cluster_iscreen(args, settingsMap, date):
+def testing_cluster_iscreen(args, settingsMap, date, hostname):
     print_log('################################')
     print_log('################################')
     print_log('iscreen cluster test started')
@@ -261,14 +266,14 @@ def testing_cluster_iscreen(args, settingsMap, date):
         hitlist = '../test_data/' + settingsMap['iscreen']['cluster'][test]['hitlist']
         logfile = '../test_data/' + hitlist.split('/')[-1].split('.')[0] + '.log'
         tests = settingsMap['iscreen']['cluster'][test]['evaluate']
-        executable = args.ls_base + '/iscreen' 
+        executable = '/data/shared/software/hydra' + '/iscreen.sh' 
 
         print_log('Calling %s' % executable)
         print_log('Screening library: %s' % screening_library)
         print_log('Pharmacophore model: %s' % ph)
         print_log('Hitlist: %s' % hitlist)
         print_log('Qsub-Name: %s' % qsub_name)
-        print_log('Host: %s' % str(args.host))
+        print_log('Host: %s' % str(hostname))
         print_log('Options: %s' % arguments)
         print_log('Testing: %s' % tests)
         print_log('Logfile: %s' % logfile)
@@ -276,17 +281,17 @@ def testing_cluster_iscreen(args, settingsMap, date):
 
 
         ti0 = time.time()
-        proc = Popen([executable, '--database', screening_library, '--query', ph, '--output', hitlist, '--log',  logfile, '--qsub-name', qsub_name] + arguments_list])#, stdout=DEVNULL, stderr=DEVNULL)
+        proc = Popen([executable, '--database', screening_library, '--query', ph, '--output', hitlist, '--log',  logfile, '--qsub-name', qsub_name] + arguments_list)#, stdout=DEVNULL, stderr=DEVNULL)
         d = monitor_process(proc)
         ti1 = time.time()
         took_time = ti1 - ti0 - 5 # time in seconds (-5 because of the sleep call in monitor_process())
         time.sleep(5)
 
-        evaluating_output('iscreen-' + str(args.host), took_time, tests, str(settingsMap['idbgen'][test]['output']), test, d, logfile)
-        _write_test_result('iscreen-' + str(args.host), test, date, 'dates')
+        evaluating_output('iscreen-' + str(hostname), took_time, tests, str(settingsMap['iscreen'][cluster][test]['hitlist']), test, d, logfile)
+        _write_test_result('iscreen-' + str(hostname), test, date, 'dates')
 
 
-def testing_idbgen(args, settingsMap, date):
+def testing_idbgen(args, settingsMap, date, hostname):
     print_log('################################')
     print_log('################################')
     print_log('idbgen local/a7srv2 test started')
@@ -311,23 +316,23 @@ def testing_idbgen(args, settingsMap, date):
         print_log('Input: %s' % input)
         logfile = '../test_data/' + output.split('/')[-1].split('.')[0] + '.log'
         print_log('Output: %s' % output)
-        print_log('Host: %s' % str(args.host))
+        print_log('Host: %s' % str(hostname))
         print_log('Options: %s' % arguments)
         print_log('Testing: %s' % tests)
         print_log('Logfile: %s' % logfile)
 
         ti0 = time.time()
-        proc = Popen([executable, '--input', input, '--output', output, '--log', logfile] + arguments_list])#, stdout=DEVNULL, stderr=DEVNULL)
+        proc = Popen([executable, '--input', input, '--output', output, '--log', logfile] + arguments_list)#, stdout=DEVNULL, stderr=DEVNULL)
         d = monitor_process(proc)
         ti1 = time.time()
         took_time = ti1 - ti0 - 10 # time in seconds (-5 because of the sleep call in monitor_process())
         time.sleep(5)
 
-        evaluating_output('idbgen-' + str(args.host), took_time, tests, str(settingsMap['idbgen']['local'][test]['output']), test, d, logfile)
-        _write_test_result('idbgen-' + str(args.host), test, date, 'dates')
+        evaluating_output('idbgen-' + str(hostname), took_time, tests, str(settingsMap['idbgen']['local'][test]['output']), test, d, logfile)
+        _write_test_result('idbgen-' + str(hostname), test, date, 'dates')
 
 
-def testing_iscreen(args, settingsMap, date):
+def testing_iscreen(args, settingsMap, date, hostname):
     print_log('################################')
     print_log('################################')
     print_log('iscreen test started')
@@ -335,26 +340,26 @@ def testing_iscreen(args, settingsMap, date):
     print_log('################################')
 
     
-    for test in settingsMap['iscreen']:
+    for test in settingsMap['iscreen']['local']:
         print_log('################################')
         print_log('Starting with : %s' % test)
         print_log('################################')
 
 
-        screening_library = '../test_data/' + settingsMap['iscreen'][test]['library']
-        ph = '../data/' + settingsMap['iscreen'][test]['ph']
-        arguments = settingsMap['iscreen'][test]['options']
+        screening_library = '../test_data/' + settingsMap['iscreen']['local'][test]['library']
+        ph = '../data/' + settingsMap['iscreen']['local'][test]['ph']
+        arguments = settingsMap['iscreen']['local'][test]['options']
         arguments_list = arguments.split()
 
-        hitlist = '../test_data/' + settingsMap['iscreen'][test]['hitlist']
+        hitlist = '../test_data/' + settingsMap['iscreen']['local'][test]['hitlist']
         logfile = '../test_data/' + hitlist.split('/')[-1].split('.')[0] + '.log'
-        tests = settingsMap['iscreen'][test]['evaluate']
+        tests = settingsMap['iscreen']['local'][test]['evaluate']
         executable = args.ls_base + '/iscreen' 
 
         print_log('Calling %s' % executable)
         print_log('Screening library: %s' % screening_library)
         print_log('Pharmacophore model: %s' % ph)
-        print_log('Host: %s' % str(args.host))
+        print_log('Host: %s' % str(hostname))
         print_log('Hitlist: %s' % hitlist)
         print_log('Options: %s' % arguments)
         print_log('Testing: %s' % tests)
@@ -362,14 +367,14 @@ def testing_iscreen(args, settingsMap, date):
 
 
         ti0 = time.time()
-        proc = Popen([executable, '--database', screening_library, '--query', ph, '--output', hitlist, '--log',  logfile] + arguments_list])#, stdout=DEVNULL, stderr=DEVNULL)
+        proc = Popen([executable, '--database', screening_library, '--query', ph, '--output', hitlist, '--log',  logfile] + arguments_list)#, stdout=DEVNULL, stderr=DEVNULL)
         d = monitor_process(proc)
         ti1 = time.time()
         took_time = ti1 - ti0 - 5 # time in seconds (-5 because of the sleep call in monitor_process())
         time.sleep(5)
 
-        evaluating_output('iscreen-' + str(args.host), took_time, tests, str(settingsMap['idbgen'][test]['output']), test, d, logfile)
-        _write_test_result('iscreen-' + str(args.host), test, date, 'dates')
+        evaluating_output('iscreen-' + str(hostname), took_time, tests, str(settingsMap['iscreen']['local'][test]['hitlist']), test, d, logfile)
+        _write_test_result('iscreen-' + str(hostname), test, date, 'dates')
 
 
 def monitor_sge():
@@ -386,7 +391,6 @@ def monitor_sge():
             sys.stdout.flush()
             time.sleep(10)
             output = (check_output(["qstat"]))
-
    
     except KeyboardInterrupt:
         # quit and make qdel
@@ -397,17 +401,19 @@ def monitor_sge():
 
     print('Finishing with monitoring sge ...')
 
-def process_yaml(args, settingsMap):
+def process_yaml(args, settingsMap, hostname):
     date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     print_log(date)
+    local_hosts = ['a7pc82', 'a7pc83', 'a7pc84', 'a7pc85', 'a7pc86', 'a7pc87']
 
-    if str(args.host) == 'hydra':
-        testing_cluster_idgen(args, settingsMap, date)
-    elif str(args.host) == 'a7srv2' or str(args.host) == 'local':
+    if str(hostname) == 'hydra':
+        testing_cluster_idgen(args, settingsMap, date, hostname)
+        testing_cluster_iscreen(args, settingsMap, date, hostname)
+    elif str(hostname) == 'a7srv2' or str(hostname) in local_hosts:
         # start with idbgen
-        testing_idbgen(args, settingsMap, date)
+        testing_idbgen(args, settingsMap, date, hostname)
         # testing iscreen
-        testing_iscreen(args, settingsMap, date)
+        testing_iscreen(args, settingsMap, date, hostname)
     else:
         print_log('Aborting! Unknown host!')
 
@@ -423,14 +429,15 @@ if __name__ == '__main__':
 
     if os.path.exists(output_dir):
         shutil.rmtree(output_dir)
+
     os.makedirs(output_dir)
+
     if not os.path.exists(result_dir):
         os.makedirs(result_dir)
 
-
-    args = parse_arguments()
+    args, hostname = parse_arguments()
     settingsMap = load_yaml(args)
-    process_yaml(args, settingsMap)
+    process_yaml(args, settingsMap, hostname)
 
     logging.info('Finished')
 

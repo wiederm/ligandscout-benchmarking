@@ -1,21 +1,108 @@
-
 ---
 ########
 iscreen:
 ########
   ########
   ########
+  cluster:
+    ########
+    test1:
+      library:
+        DB.sdf.gz
+      ph:
+        1XL2.pml
+      hitlist:
+        1XL2-vs-DB.sdf
+      options:
+        --allow-omit 0
+      evaluate:
+        time
+        hits
+
+    ########
+    test2:
+      library:
+        DB.sdf.gz
+      ph:
+        1XL2.pml
+      hitlist:
+        1XL2-vs-DB-allow-omit-1.sdf
+      options:
+        --allow-omit 1
+      evaluate:
+        time
+        hits
+
+    ########
+    test3:
+      library:
+        BioDesign_48291.sdf.gz
+      ph:
+        1XL2.pml
+      hitlist:
+        1XL2-vs-BioDesign_48291.sdf
+      options:
+        --allow-omit 0
+      evaluate:
+        time
+        hits
+    
+    ########
+    test4:
+      library:
+        BioDesign_48291.sdf.gz
+      ph:
+        1XL2.pml
+      hitlist:
+        1XL2-vs-BioDesign_48291-allow-omit-1.sdf
+      options:
+        --allow-omit 1
+      evaluate:
+        time
+        hits
+
+    ########
+    test5:
+      library:
+        BioDesign_48291.sdf.gz
+      ph:
+        3TOF.pml
+      hitlist:
+        3TOF-vs-BioDesign_48291.sdf
+      options:
+        --allow-omit 0
+      evaluate:
+        time
+        hits
+    
+    ########
+    test6:
+      library:
+        BioDesign_48291.sdf.gz
+      ph:
+        3TOF.pml
+      hitlist:
+        3TOF-vs-BioDesign_48291-allow-omit-1.sdf
+      options:
+        --allow-omit 1
+      evaluate:
+        time
+        hits
+
+
+  ########
+  ########
   local:
     ########
     test1:
       library:
-        decoys_final_1XL2.ldb
+        actives_final_1XL2.ldb
       ph:
         1XL2.pml
       hitlist:
-        1XL2-vs-decoys_final_1XL2.sdf
+        1XL2-vs-actives_final_1XL2-omit-1.sdf
       options:
-        --allow-omit 0
+        --allow-omit 1
       evaluate:
         time
         hits
@@ -27,9 +114,9 @@ iscreen:
       ph:
         1XL2.pml
       hitlist:
-        1XL2-vs-decoys_final_1XL2-omit-1.sdf
+        1XL2-vs-decoys_final_1XL2-omit-3.sdf
       options:
-        --allow-omit 1
+        --allow-omit 3
       evaluate:
         time
         hits
@@ -41,9 +128,9 @@ iscreen:
       ph:
         1XL2.pml
       hitlist:
-        1XL2-vs-decoys_final_1XL2-omit-2.sdf
+        1XL2-vs-decoys_final_1XL2-omit-4.sdf
       options:
-        --allow-omit 2
+        --allow-omit 4
       evaluate:
         time
         hits
@@ -262,176 +349,9 @@ idbgen:
         inserted
         failed
 
+
     ########
     test5:
-      input:
-        actives_final_1XL2.sdf.gz
-      options:
-        '--confgen-type icon-best'
-      output:
-        actives_final_1XL2-icon-best.ldb
-      evaluate:
-        time
-        duplicate
-        inserted
-        failed
-
-    ########
-    test6:
-      input:
-        actives_final_3TOF.sdf.gz
-      options:
-        '--confgen-type icon-best'
-      output:
-        actives_final_3TOF-icon-best.ldb
-      evaluate:
-        time
-        duplicate
-        inserted
-        failed
-
-    ########
-    test7:
-      input:
-        actives_final_1XL2.sdf.gz
-      options:
-        '--confgen-type icon-best --hydrophob_threshold 0.2'
-      output:
-        actives_final_1XL2-icon-best-hydrophob-threshold-20.ldb
-      evaluate:
-        time
-        duplicate
-        inserted
-        failed
-
-    ########
-    test8:
-      input:
-        actives_final_3TOF.sdf.gz
-      options:
-        '--confgen-type icon-best --hydrophob_threshold 0.2'
-      output:
-        actives_final_3TOF-icon-best-hydrophob-threshold-20.ldb
-      evaluate:
-        time
-        duplicate
-        inserted
-        failed
-
-    ########
-    test9:
-      input:
-        actives_final_1XL2.sdf.gz
-      options:
-        '--confgen-type icon-best --hydrophob_threshold 0.4'
-      output:
-        actives_final_1XL2-icon-best-hydrophob-threshold-40.ldb
-      evaluate:
-        time
-        duplicate
-        inserted
-        failed
-
-    ########
-    test10:
-      input:
-        actives_final_3TOF.sdf.gz
-      options:
-        '--confgen-type icon-best --hydrophob_threshold 0.4'
-      output:
-        actives_final_3TOF-icon-best-hydrophob-threshold-40.ldb
-      evaluate:
-        time
-        duplicate
-        inserted
-        failed
-
-    ########
-    test11:
-      input:
-        actives_final_1XL2.sdf.gz
-      options:
-        '--confgen-type icon-best --hydrophob_threshold 0.6'
-      output:
-        actives_final_1XL2-icon-best-hydrophob-threshold-60.ldb
-      evaluate:
-        time
-        duplicate
-        inserted
-        failed
-
-    ########
-    test12:
-      input:
-        actives_final_3TOF.sdf.gz
-      options:
-        '--confgen-type icon-best --hydrophob_threshold 0.6'
-      output:
-        actives_final_3TOF-icon-best-hydrophob-threshold-60.ldb
-      evaluate:
-        time
-        duplicate
-        inserted
-        failed
-
-    ########
-    test13:
-      input:
-        actives_final_1XL2.sdf.gz
-      options:
-        '--confgen-type icon-best --max-molweight 50'
-      output:
-        actives_final_1XL2-icon-best-max-molweight-50.ldb
-      evaluate:
-        time
-        duplicate
-        inserted
-        failed
-
-    ########
-    test14:
-      input:
-        actives_final_3TOF.sdf.gz
-      options:
-        '--confgen-type icon-best --max-molweight 50'
-      output:
-        actives_final_3TOF-icon-best-max-molweight-50.ldb
-      evaluate:
-        time
-        duplicate
-        inserted
-        failed
-
-    ########
-    test15:
-      input:
-        actives_final_1XL2.sdf.gz
-      options:
-        '--confgen-type icon-best --max-molweight 150'
-      output:
-        actives_final_1XL2-icon-best-max-molweight-150.ldb
-      evaluate:
-        time
-        duplicate
-        inserted
-        failed
-
-    ########
-    test16:
-      input:
-        actives_final_3TOF.sdf.gz
-      options:
-        '--confgen-type icon-best --max-molweight 150'
-      output:
-        actives_final_3TOF-icon-best-max-molweight-150.ldb
-      evaluate:
-        time
-        duplicate
-        inserted
-        failed
-
-    ########
-    test17:
       input:
         actives_final_3KBA.sdf.gz
       options:
@@ -445,7 +365,7 @@ idbgen:
         failed
     
     ########
-    test18:
+    test6:
       input:
         decoys_final_3KBA.sdf.gz
       options:
@@ -465,13 +385,52 @@ idbgen:
       input:
         DB.sdf.gz
       options:
+        '--confgen-type icon-fast --qsub-chunk-size 1000'
+      output:
+        DB.ldb
+      evaluate:
+        time
+        duplicate
+        failed
+
+    ########
+    test2:
+      input:
+        BioDesign_48291.sdf.gz
+      options:
+        '--confgen-type icon-fast --qsub-chunk-size 1000'
+      output:
+        DB.ldb
+      evaluate:
+        time
+        duplicate
+        failed
+
+    ########
+    test3:
+      input:
+        BioDesign_48291.sdf.gz
+      options:
         '--confgen-type icon-fast --qsub-chunk-size 2000'
       output:
         DB.ldb
       evaluate:
         time
         duplicate
-        inserted
         failed
+
+    ########
+    test4:
+      input:
+        BioDesign_48291.sdf.gz
+      options:
+        '--confgen-type icon-fast --qsub-chunk-size 3000'
+      output:
+        DB.ldb
+      evaluate:
+        time
+        duplicate
+        failed
+
 
 ...
