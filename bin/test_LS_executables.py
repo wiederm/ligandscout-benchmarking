@@ -2,7 +2,6 @@ import os, psutil, re, shutil, sys, glob, socket
 from subprocess import Popen, check_output, DEVNULL
 import argparse
 import yaml
-import resource
 import time
 import math
 import logging
@@ -404,18 +403,15 @@ def monitor_sge():
 def process_yaml(args, settingsMap, hostname):
     date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     print_log(date)
-    local_hosts = ['a7pc82', 'a7pc83', 'a7pc84', 'a7pc85', 'a7pc86', 'a7pc87']
 
     if str(hostname) == 'hydra':
         testing_cluster_idgen(args, settingsMap, date, hostname)
         testing_cluster_iscreen(args, settingsMap, date, hostname)
-    elif str(hostname) == 'a7srv2' or str(hostname) in local_hosts:
+    else:
         # start with idbgen
         testing_idbgen(args, settingsMap, date, hostname)
         # testing iscreen
         testing_iscreen(args, settingsMap, date, hostname)
-    else:
-        print_log('Aborting! Unknown host!')
 
 
 if __name__ == '__main__':
@@ -423,9 +419,10 @@ if __name__ == '__main__':
     logging.basicConfig(filename='../log/LS_executable_test.log',level=logging.DEBUG)
     logging.basicConfig(format='%(asctime)s %(message)s')
     logging.info('Started')
+    args, hostname = parse_arguments()
 
-    output_dir = '../test_data'
-    result_dir = '../test_results'
+    output_dir = '../test_data_' + str(hostname)
+    result_dir = '../test_results_' + str(hostname)
 
     if os.path.exists(output_dir):
         shutil.rmtree(output_dir)
@@ -435,7 +432,6 @@ if __name__ == '__main__':
     if not os.path.exists(result_dir):
         os.makedirs(result_dir)
 
-    args, hostname = parse_arguments()
     settingsMap = load_yaml(args)
     process_yaml(args, settingsMap, hostname)
 

@@ -1,18 +1,18 @@
 ---
-########
+################
 iscreen:
-########
-  ########
-  ########
+################
+  ################
+  ################
   cluster:
-    ########
+    ################
     test1:
       library:
-        DB.sdf.gz
+        DB1_7000.ldb
       ph:
         1XL2.pml
       hitlist:
-        1XL2-vs-DB.sdf
+        1XL2-vs-DB1_7000.sdf
       options:
         --allow-omit 0
       evaluate:
@@ -22,11 +22,11 @@ iscreen:
     ########
     test2:
       library:
-        DB.sdf.gz
+        DB_7000.ldb
       ph:
         1XL2.pml
       hitlist:
-        1XL2-vs-DB-allow-omit-1.sdf
+        1XL2-vs-DB_7000-allow-omit-1.sdf
       options:
         --allow-omit 1
       evaluate:
@@ -36,11 +36,11 @@ iscreen:
     ########
     test3:
       library:
-        BioDesign_48291.sdf.gz
+        DB2_50000.ldb
       ph:
         1XL2.pml
       hitlist:
-        1XL2-vs-BioDesign_48291.sdf
+        1XL2-vs-DB2_50000.sdf
       options:
         --allow-omit 0
       evaluate:
@@ -50,11 +50,11 @@ iscreen:
     ########
     test4:
       library:
-        BioDesign_48291.sdf.gz
+        DB2_50000.ldb
       ph:
         1XL2.pml
       hitlist:
-        1XL2-vs-BioDesign_48291-allow-omit-1.sdf
+        1XL2-vs-DB2_50000-allow-omit-1.sdf
       options:
         --allow-omit 1
       evaluate:
@@ -64,11 +64,11 @@ iscreen:
     ########
     test5:
       library:
-        BioDesign_48291.sdf.gz
+        DB2_50000.ldb
       ph:
         3TOF.pml
       hitlist:
-        3TOF-vs-BioDesign_48291.sdf
+        3TOF-vs-DB2_50000.sdf
       options:
         --allow-omit 0
       evaluate:
@@ -78,11 +78,11 @@ iscreen:
     ########
     test6:
       library:
-        BioDesign_48291.sdf.gz
+        DB2_50000.ldb
       ph:
         3TOF.pml
       hitlist:
-        3TOF-vs-BioDesign_48291-allow-omit-1.sdf
+        3TOF-vs-DB2_50000-allow-omit-1.sdf
       options:
         --allow-omit 1
       evaluate:
@@ -96,11 +96,11 @@ iscreen:
     ########
     test1:
       library:
-        actives_final_1XL2.ldb
+        DB2_50000.ldb
       ph:
         1XL2.pml
       hitlist:
-        1XL2-vs-actives_final_1XL2-omit-1.sdf
+        DB2_50000.sdf
       options:
         --allow-omit 1
       evaluate:
@@ -110,11 +110,11 @@ iscreen:
     ########
     test2:
       library:
-        decoys_final_1XL2.ldb
+        1XL2_decoys_40000.ldb
       ph:
         1XL2.pml
       hitlist:
-        1XL2-vs-decoys_final_1XL2-omit-3.sdf
+        1XL2-vs-1XL2_decoys_40000-omit-3.sdf
       options:
         --allow-omit 3
       evaluate:
@@ -124,11 +124,11 @@ iscreen:
     ########
     test3:
       library:
-        decoys_final_1XL2.ldb
+        1XL2_decoys_40000.ldb
       ph:
         1XL2.pml
       hitlist:
-        1XL2-vs-decoys_final_1XL2-omit-4.sdf
+        1XL2-vs-1XL2_decoys_40000-omit-4.sdf
       options:
         --allow-omit 4
       evaluate:
@@ -138,11 +138,11 @@ iscreen:
     ########
     test4:
       library:
-        actives_final_3TOF.ldb
+        3KBA_actives_400.ldb
       ph:
         3TOF.pml
       hitlist:
-        3TOF-vs-actives_final_3TOF.sdf
+        3TOF-vs-3KBA_actives_400.sdf
       options:
         --allow-omit 0
       evaluate:
@@ -152,11 +152,11 @@ iscreen:
     ########
     test5:
       library:
-        actives_final_3TOF.ldb
+        3TOF_actives_1400.ldb
       ph:
         3TOF.pml
       hitlist:
-        3TOF-vs-actives_final_3TOF-omit-1.sdf
+        3TOF-vs-3TOF_actives_1400-omit-1.sdf
       options:
         --allow-omit 1
       evaluate:
@@ -166,11 +166,11 @@ iscreen:
     ########
     test6:
       library:
-        actives_final_3TOF.ldb
+        3TOF_actives_1400.ldb
       ph:
         3TOF.pml
       hitlist:
-        3TOF-vs-actives_final_3TOF-omit-2.sdf
+        3TOF-vs-3TOF_actives_1400-omit-2.sdf
       options:
         --allow-omit 2
       evaluate:
@@ -180,11 +180,11 @@ iscreen:
     ########
     test7:
       library:
-        decoys_final_3TOF.ldb
+        3TOF_decoys_40000.ldb
       ph:
         3TOF.pml
       hitlist:
-        3TOF-vs-decoys_final_3TOF.sdf
+        3TOF-vs-3TOF_decoys_40000.sdf
       options:
         --allow-omit 0
       evaluate:
@@ -194,11 +194,11 @@ iscreen:
     ########
     test8:
       library:
-        decoys_final_3TOF.ldb
+        3TOF_decoys_40000.ldb
       ph:
         3TOF.pml
       hitlist:
-        3TOF-vs-decoys_final_3TOF-omit-1.sdf
+        3TOF-vs-3TOF_decoys_40000-omit-1.sdf
       options:
         --allow-omit 1
       evaluate:
@@ -208,11 +208,11 @@ iscreen:
     ########
     test9:
       library:
-        decoys_final_3TOF.ldb
+        3TOF_decoys_40000.ldb
       ph:
         3TOF.pml
       hitlist:
-        3TOF-vs-decoys_final_3TOF-omit-2.sdf
+        3TOF-vs-3TOF_decoys_40000-omit-2.sdf
       options:
         --allow-omit 2
       evaluate:
@@ -222,11 +222,11 @@ iscreen:
     ########
     test10:
       library:
-        decoys_final_3KBA.ldb
+        3KBA_decoys_15000.ldb
       ph:
         3KBA.pml
       hitlist:
-        3KBA-vs-decoys_final_3KBA.sdf
+        3KBA-vs-3KBA_decoys_15000.sdf
       options:
         --allow-omit 0
       evaluate:
@@ -236,11 +236,11 @@ iscreen:
     ########
     test11:
       library:
-        actives_final_3KBA.ldb
+        3KBA_actives_400.ldb
       ph:
         3KBA.pml
       hitlist:
-        3KBA-vs-decoys_final_3KBA.sdf
+        3KBA-vs-3KBA_actives_400.sdf
       options:
         --allow-omit 0
       evaluate:
@@ -250,11 +250,11 @@ iscreen:
     ########
     test12:
       library:
-        decoys_final_3KBA.ldb
+        3KBA_decoys_15000.ldb
       ph:
         3KBA.pml
       hitlist:
-        3KBA-vs-decoys_final_3KBA-omit-1.sdf
+        3KBA-vs-3KBA_decoys_15000-omit-1.sdf
       options:
         --allow-omit 1
       evaluate:
@@ -264,11 +264,11 @@ iscreen:
     ########
     test13:
       library:
-        actives_final_3KBA.ldb
+        3KBA_actives_400.ldb
       ph:
         3KBA.pml
       hitlist:
-        3KBA-vs-decoys_final_3KBA-omit-1.sdf
+        3KBA-vs-3KBA_actives_400-omit-1.sdf
       options:
         --allow-omit 1
       evaluate:
@@ -278,11 +278,11 @@ iscreen:
     ########
     test14:
       library:
-        DB.ldb
+        DB1_7000.ldb
       ph:
         3KBA.pml
       hitlist:
-        3KBA-vs-DB.sdf
+        3KBA-vs-DB1_7000.sdf
       options:
         --allow-omit 1
       evaluate:
@@ -292,17 +292,30 @@ iscreen:
     ########
     test15:
       library:
-        DB.ldb
+        DB1_7000.ldb
       ph:
         1XL2.pml
       hitlist:
-        1XL2-vs-DB.sdf
+        1XL2-vs-DB1_7000.sdf
       options:
         --allow-omit 1
       evaluate:
         time
         hits
 
+    ########
+    test16:
+      library:
+        DB2_50000.ldb
+      ph:
+        1XL2.pml
+      hitlist:
+        1XL2-vs-DB2_50000.sdf
+      options:
+        --allow-omit 1
+      evaluate:
+        time
+        hits
 
 ################
 espresso:
@@ -323,11 +336,11 @@ idbgen:
     ################
     test1:
       input:
-        actives_final_1XL2.sdf.gz
+        1XL2_actives_1400.sdf.gz
       options:
         '--confgen-type icon-fast'
       output:
-        actives_final_1XL2.ldb
+        1XL2_actives_1400.ldb
       evaluate:
         time
         duplicate
@@ -337,11 +350,11 @@ idbgen:
     ########
     test2:
       input:
-        decoys_final_1XL2.sdf.gz
+        1XL2_decoys_40000.sdf.gz
       options:
         '--confgen-type icon-fast'
       output:
-        decoys_final_1XL2.ldb
+        1XL2_decoys_40000.ldb
       evaluate:
         time
         duplicate
@@ -351,11 +364,11 @@ idbgen:
     ########
     test3:
       input:
-        actives_final_3TOF.sdf.gz
+        3TOF_actives_1400.sdf.gz
       options:
         '--confgen-type icon-fast'
       output:
-        actives_final_3TOF.ldb
+        3TOF_actives_1400.ldb
       evaluate:
         time
         duplicate
@@ -365,26 +378,25 @@ idbgen:
     ########
     test4:
       input:
-        decoys_final_3TOF.sdf.gz
+        3TOF_decoys_40000.sdf.gz
       options:
         '--confgen-type icon-fast'
       output:
-        decoys_final_3TOF.ldb
+        3TOF_decoys_40000.ldb
       evaluate:
         time
         duplicate
         inserted
         failed
 
-
     ########
     test5:
       input:
-        actives_final_3KBA.sdf.gz
+        3KBA_actives_400.sdf.gz
       options:
         '--confgen-type icon-fast'
       output:
-        actives_final_3KBA.ldb
+        3KBA_actives_400.ldb
       evaluate:
         time
         duplicate
@@ -394,11 +406,11 @@ idbgen:
     ########
     test6:
       input:
-        decoys_final_3KBA.sdf.gz
+        3KBA_decoys_15000.sdf.gz
       options:
         '--confgen-type icon-fast'
       output:
-        decoys_final_3KBA.ldb
+        3KBA_decoys_15000.ldb
       evaluate:
         time
         duplicate
@@ -408,16 +420,32 @@ idbgen:
     ########
     test7:
       input:
-        DB.sdf.gz
+        DB1_7000.sdf.gz
       options:
         '--confgen-type icon-fast'
       output:
-        DB.ldb
+        DB1_7000.ldb
       evaluate:
         time
         duplicate
         inserted
         failed
+
+
+    ########
+    test8:
+      input:
+        DB2_50000.sdf.gz
+      options:
+        '--confgen-type icon-fast'
+      output:
+        DB2_50000.ldb
+      evaluate:
+        time
+        duplicate
+        inserted
+        failed
+
 
   ################
   ################
@@ -425,11 +453,11 @@ idbgen:
     ################
     test1:
       input:
-        DB.sdf.gz
+        DB1_7000.sdf.gz
       options:
         '--confgen-type icon-fast --qsub-chunk-size 1000'
       output:
-        DB.ldb
+        DB1_7000.ldb
       evaluate:
         time
         duplicate
@@ -438,11 +466,11 @@ idbgen:
     ########
     test2:
       input:
-        BioDesign_48291.sdf.gz
+        DB2_50000.sdf.gz
       options:
         '--confgen-type icon-fast --qsub-chunk-size 1000'
       output:
-        DB.ldb
+        DB2_50000.ldb
       evaluate:
         time
         duplicate
@@ -451,11 +479,11 @@ idbgen:
     ########
     test3:
       input:
-        BioDesign_48291.sdf.gz
+        DB2_50000.sdf.gz
       options:
         '--confgen-type icon-fast --qsub-chunk-size 2000'
       output:
-        DB.ldb
+        DB2_50000.ldb
       evaluate:
         time
         duplicate
@@ -464,11 +492,11 @@ idbgen:
     ########
     test4:
       input:
-        BioDesign_48291.sdf.gz
+        DB2_50000.sdf.gz
       options:
         '--confgen-type icon-fast --qsub-chunk-size 3000'
       output:
-        DB.ldb
+        DB2_50000.ldb
       evaluate:
         time
         duplicate
